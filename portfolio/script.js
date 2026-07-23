@@ -111,9 +111,20 @@ const observer = new IntersectionObserver((entries) => {
             animateCounters();
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.2 });
 
 if (aboutSection) observer.observe(aboutSection);
+
+// Fallback: show actual values after 3s if observer didn't fire
+setTimeout(() => {
+    if (!countersAnimated) {
+        countersAnimated = true;
+        counters.forEach(counter => {
+            const target = counter.getAttribute('data-target');
+            counter.textContent = target + '+';
+        });
+    }
+}, 3000);
 
 // ===== Scroll Reveal =====
 const revealElements = document.querySelectorAll('.skill-category, .project-card, .timeline-item');

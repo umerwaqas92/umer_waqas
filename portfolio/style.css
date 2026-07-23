@@ -404,6 +404,15 @@ img { max-width: 100%; display: block; }
     text-align: center;
 }
 
+.stat-icon {
+    font-size: 1.8rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
 .stat-number {
     font-size: 2.5rem;
     font-weight: 800;
