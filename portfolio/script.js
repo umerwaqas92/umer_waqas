@@ -203,33 +203,35 @@ if (prevBtn && nextBtn) {
     setInterval(nextSlide, 4000);
 }
 
-// ===== Askly Slider =====
-const asklySlides = document.querySelectorAll('.askly-slide');
-const asklyDots = document.querySelectorAll('.askly-dot');
-const asklyPrev = document.querySelector('.askly-slider-btn.prev');
-const asklyNext = document.querySelector('.askly-slider-btn.next');
-let asklyCurrent = 0;
+// ===== Project Card Sliders Helper =====
+function initProjectSlider(slideSel, dotSel, prevSel, nextSel) {
+    const slides = document.querySelectorAll(slideSel);
+    const dots = document.querySelectorAll(dotSel);
+    const prev = document.querySelector(prevSel);
+    const next = document.querySelector(nextSel);
+    let current = 0;
 
-function asklyShow(index) {
-    asklySlides.forEach(s => s.classList.remove('active'));
-    asklyDots.forEach(d => d.classList.remove('active'));
-    asklySlides[index].classList.add('active');
-    asklyDots[index].classList.add('active');
-    asklyCurrent = index;
+    if (!slides.length) return;
+
+    function show(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        if (slides[index]) slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+        current = index;
+    }
+
+    if (prev && next) {
+        prev.addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
+        next.addEventListener('click', () => show((current + 1) % slides.length));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => show(parseInt(dot.dataset.index)));
+        });
+    }
 }
 
-function asklyNextSlide() {
-    asklyShow((asklyCurrent + 1) % asklySlides.length);
-}
+// Initialize Sliders
+initProjectSlider('.askly-slide', '.askly-dot', '.askly-slider-btn.prev', '.askly-slider-btn.next');
+initProjectSlider('.micamp-slide', '.micamp-dot', '.micamp-slider-btn.prev', '.micamp-slider-btn.next');
+initProjectSlider('.trendsnap-slide', '.trendsnap-dot', '.trendsnap-slider-btn.prev', '.trendsnap-slider-btn.next');
 
-function asklyPrevSlide() {
-    asklyShow((asklyCurrent - 1 + asklySlides.length) % asklySlides.length);
-}
-
-if (asklyPrev && asklyNext) {
-    asklyPrev.addEventListener('click', asklyPrevSlide);
-    asklyNext.addEventListener('click', asklyNextSlide);
-    asklyDots.forEach(dot => {
-        dot.addEventListener('click', () => asklyShow(parseInt(dot.dataset.index)));
-    });
-}

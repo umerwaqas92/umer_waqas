@@ -483,24 +483,28 @@ img { max-width: 100%; display: block; }
     color: var(--primary-light);
 }
 
-/* ===== Projects Section ===== */
+/* ===== Projects Section (Pinterest Masonry Grid) ===== */
 .projects {
     padding: 100px 0;
     background: var(--bg-card);
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    columns: 3 340px;
+    column-gap: 28px;
 }
 
 .project-card {
+    break-inside: avoid;
+    margin-bottom: 28px;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
     transition: var(--transition);
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
 }
 
 .project-card:hover {
@@ -511,14 +515,17 @@ img { max-width: 100%; display: block; }
 
 .project-image {
     position: relative;
-    height: 280px;
+    width: 100%;
+    height: auto;
     overflow: hidden;
+    background: var(--bg-elevated);
 }
 
 .project-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    object-fit: contain;
     transition: var(--transition);
 }
 
@@ -975,36 +982,39 @@ img { max-width: 100%; display: block; }
     color: var(--primary-light);
 }
 
-/* ===== Askly Project Slider ===== */
-.askly-slider {
+/* ===== Askly & Project Sliders ===== */
+.askly-slider, .micamp-slider, .trendsnap-slider {
     position: relative;
-    height: 280px;
+    width: 100%;
+    height: auto;
     overflow: hidden;
+    background: var(--bg-elevated);
 }
 
-.askly-slider-track {
+.askly-slider-track, .micamp-slider-track, .trendsnap-slider-track {
     display: flex;
     transition: transform 0.4s ease;
-    height: 100%;
+    width: 100%;
 }
 
-.askly-slide {
+.askly-slide, .micamp-slide, .trendsnap-slide {
     min-width: 100%;
     display: none;
-    height: 100%;
+    height: auto;
 }
 
-.askly-slide.active {
+.askly-slide.active, .micamp-slide.active, .trendsnap-slide.active {
     display: block;
 }
 
-.askly-slide img {
+.askly-slide img, .micamp-slide img, .trendsnap-slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
-.askly-slider-btn {
+.askly-slider-btn, .micamp-slider-btn, .trendsnap-slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1024,18 +1034,22 @@ img { max-width: 100%; display: block; }
     opacity: 0;
 }
 
-.project-card:hover .askly-slider-btn {
+.project-card:hover .askly-slider-btn,
+.project-card:hover .micamp-slider-btn,
+.project-card:hover .trendsnap-slider-btn {
     opacity: 1;
 }
 
-.askly-slider-btn:hover {
+.askly-slider-btn:hover,
+.micamp-slider-btn:hover,
+.trendsnap-slider-btn:hover {
     background: rgba(108, 92, 231, 0.8);
 }
 
-.askly-slider-btn.prev { left: 10px; }
-.askly-slider-btn.next { right: 10px; }
+.askly-slider-btn.prev, .micamp-slider-btn.prev, .trendsnap-slider-btn.prev { left: 10px; }
+.askly-slider-btn.next, .micamp-slider-btn.next, .trendsnap-slider-btn.next { right: 10px; }
 
-.askly-slider-dots {
+.askly-slider-dots, .micamp-slider-dots, .trendsnap-slider-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -1045,7 +1059,7 @@ img { max-width: 100%; display: block; }
     z-index: 2;
 }
 
-.askly-dot {
+.askly-dot, .micamp-dot, .trendsnap-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -1054,7 +1068,7 @@ img { max-width: 100%; display: block; }
     transition: var(--transition);
 }
 
-.askly-dot.active {
+.askly-dot.active, .micamp-dot.active, .trendsnap-dot.active {
     background: #fff;
     transform: scale(1.2);
 }
@@ -1119,11 +1133,8 @@ img { max-width: 100%; display: block; }
     }
 
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        columns: 2 280px;
+        column-gap: 20px;
     }
 
     .upwork-content {
@@ -1183,7 +1194,7 @@ img { max-width: 100%; display: block; }
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
+        columns: 1;
     }
 
     .about-stats {
