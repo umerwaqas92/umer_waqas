@@ -441,15 +441,15 @@ function downloadResume() {
 
         doc.save('Umer_Waqas_Resume.pdf');
 
-        if (btn) { btn.textContent = ' Resume PDF'; btn.disabled = false; }
+        if (btn) { btn.innerHTML = '<i class="fas fa-file-pdf"></i> Resume PDF'; btn.disabled = false; }
     }).catch(() => {
         // Fallback: generate without images
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('p', 'mm', 'a4');
         doc.text('Error loading images. Please try again.', 20, 20);
         doc.save('Umer_Waqas_Resume.pdf');
-        if (btn) { btn.textContent = ' Resume PDF'; btn.disabled = false; }
-    });
+        if (btn) { btn.innerHTML = '<i class="fas fa-file-pdf"></i> Resume PDF'; btn.disabled = false; }
+});
 }
 
 function loadImage(src) {
