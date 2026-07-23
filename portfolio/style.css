@@ -1223,8 +1223,14 @@ img { max-width: 100%; display: block; }
     font-size: 1.8rem;
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
     z-index: 999;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     text-decoration: none;
+}
+
+.whatsapp-float.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
 }
 
 .whatsapp-float:hover {

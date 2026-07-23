@@ -5,8 +5,19 @@ const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
 // Navbar scroll effect
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 50);
+    // Hide WhatsApp button on scroll down, show on scroll up
+    const waBtn = document.querySelector('.whatsapp-float');
+    if (waBtn) {
+        if (window.scrollY > 300 && window.scrollY > lastScroll) {
+            waBtn.classList.add('hidden');
+        } else if (window.scrollY < lastScroll) {
+            waBtn.classList.remove('hidden');
+        }
+        lastScroll = window.scrollY;
+    }
     updateActiveLink();
 });
 
