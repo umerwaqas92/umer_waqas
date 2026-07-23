@@ -202,3 +202,34 @@ if (prevBtn && nextBtn) {
     });
     setInterval(nextSlide, 4000);
 }
+
+// ===== Askly Slider =====
+const asklySlides = document.querySelectorAll('.askly-slide');
+const asklyDots = document.querySelectorAll('.askly-dot');
+const asklyPrev = document.querySelector('.askly-slider-btn.prev');
+const asklyNext = document.querySelector('.askly-slider-btn.next');
+let asklyCurrent = 0;
+
+function asklyShow(index) {
+    asklySlides.forEach(s => s.classList.remove('active'));
+    asklyDots.forEach(d => d.classList.remove('active'));
+    asklySlides[index].classList.add('active');
+    asklyDots[index].classList.add('active');
+    asklyCurrent = index;
+}
+
+function asklyNextSlide() {
+    asklyShow((asklyCurrent + 1) % asklySlides.length);
+}
+
+function asklyPrevSlide() {
+    asklyShow((asklyCurrent - 1 + asklySlides.length) % asklySlides.length);
+}
+
+if (asklyPrev && asklyNext) {
+    asklyPrev.addEventListener('click', asklyPrevSlide);
+    asklyNext.addEventListener('click', asklyNextSlide);
+    asklyDots.forEach(dot => {
+        dot.addEventListener('click', () => asklyShow(parseInt(dot.dataset.index)));
+    });
+}
