@@ -284,6 +284,8 @@ initProjectSlider('.trendsnap-slide', '.trendsnap-dot', '.trendsnap-slider-btn.p
 // ===== Resume PDF Generator =====
 function downloadResume() {
     const btn = document.querySelector('.btn-outline');
+    const loader = document.getElementById('pdfLoader');
+    if (loader) loader.classList.add('active');
     if (btn) { btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...'; btn.disabled = true; }
 
     // Load images async
@@ -441,9 +443,11 @@ function downloadResume() {
 
         doc.save('Umer_Waqas_Resume.pdf');
 
+        if (loader) loader.classList.remove('active');
         if (btn) { btn.innerHTML = '<i class="fas fa-file-pdf"></i> Resume PDF'; btn.disabled = false; }
     }).catch(() => {
         // Fallback: generate without images
+        if (loader) loader.classList.remove('active');
         downloadResumeDirect(btn, null, null, null);
     });
 }
@@ -536,8 +540,9 @@ function downloadResumeDirect(btn, profileImg, proj1Img, proj2Img) {
     ['\u201CWonderful resource, very helpful and self starter.\u201D','\u201CUmer was excellent to work with and extremely diligent.\u201D','\u201CUmer simply put just gets it. I highly recommend him.\u201D','\u201CAlways a pleasure. Delivers on projects very fast.\u201D','\u201CSecond successful job - will work together again.\u201D'].forEach(r=>{w(r,9,{italic:true,color:[100,100,100],space:2});});
 
     doc.save('Umer_Waqas_Resume.pdf');
+    const loaderFallback = document.getElementById('pdfLoader');
+    if (loaderFallback) loaderFallback.classList.remove('active');
     if (btn) { btn.innerHTML = '<i class="fas fa-file-pdf"></i> Resume PDF'; btn.disabled = false; }
-}
 }
 
 function loadImage(src) {
