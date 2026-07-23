@@ -1574,62 +1574,6 @@ img { max-width: 100%; display: block; }
     }
 }
 
-/* ===== PDF Loader Overlay ===== */
-.pdf-loader {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(7px);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-}
-
-.pdf-loader.active {
-    display: flex;
-}
-
-.pdf-loader-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 48px 40px;
-    text-align: center;
-    max-width: 340px;
-    width: 90%;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-}
-
-.pdf-loader-spinner {
-    width: 48px;
-    height: 48px;
-    border: 3px solid var(--border);
-    border-top: 3px solid var(--primary);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 0 auto 20px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.pdf-loader-content p {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-}
-
-.pdf-loader-content span {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
 /* ===== Floating WhatsApp Button ===== */
 .whatsapp-float {
     position: fixed;
