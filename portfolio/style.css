@@ -544,40 +544,6 @@ img { max-width: 100%; display: block; }
     background: var(--bg-elevated);
 }
 
-.project-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(108, 92, 231, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-overlay a {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.2rem;
-    transition: var(--transition);
-}
-
-.project-overlay a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
 .project-info {
     padding: 14px 16px;
 }
