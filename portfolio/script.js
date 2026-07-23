@@ -285,129 +285,103 @@ initProjectSlider('.trendsnap-slide', '.trendsnap-dot', '.trendsnap-slider-btn.p
 function downloadResume() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
-    const pageW = 210;
-    const margin = 20;
-    const maxW = pageW - margin * 2;
-    let y = margin;
+    const m = 20;
+    const maxW = 170;
+    let y = m;
 
-    function text(txt, size, style, color) {
+    function w(txt, size, opts) {
+        opts = opts || {};
         doc.setFontSize(size || 11);
-        if (style) doc.setFont('Helvetica', style);
-        else doc.setFont('Helvetica', 'normal');
-        if (color) doc.setTextColor(color[0], color[1], color[2]);
+        doc.setFont('Helvetica', opts.bold ? 'bold' : (opts.italic ? 'italic' : 'normal'));
+        if (opts.color) doc.setTextColor(opts.color[0], opts.color[1], opts.color[2]);
         else doc.setTextColor(50, 50, 50);
-        return doc;
+        const lines = doc.splitTextToSize(String(txt), maxW);
+        if (y + lines.length * (size * 0.35) > 285) { doc.addPage(); y = m; }
+        doc.text(lines, m, y);
+        y += lines.length * (size * 0.35) + (opts.space || 2);
     }
 
-    function wrap(txt, size) {
-        const lines = doc.splitTextToSize(txt, maxW);
-        text(txt, size);
-        return lines;
+    function sep(h) {
+        y += h || 4;
+        if (y > 280) { doc.addPage(); y = m; }
     }
 
-    function lineBreak(h) {
-        y += h || 6;
-        if (y > 280) { doc.addPage(); y = margin; }
-    }
-
-    // --- Header ---
+    // Header
     doc.setFillColor(108, 92, 231);
-    doc.rect(0, 0, pageW, 42, 'F');
+    doc.rect(0, 0, 210, 40, 'F');
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(22);
     doc.setFont('Helvetica', 'bold');
-    doc.text('Umer Waqas', margin, 20);
-    doc.setFontSize(12);
+    doc.text('Umer Waqas', m, 18);
+    doc.setFontSize(11);
     doc.setFont('Helvetica', 'normal');
-    doc.text('AI Full Stack Developer', margin, 30);
+    doc.text('AI Full Stack Developer', m, 27);
     doc.setFontSize(8);
-    doc.text('Peshawar, Pakistan | umerwaqas.dev | upwork.com/freelancers/~010219e25749223694', margin, 38);
+    doc.text('Peshawar, Pakistan | umerwaqas.dev | upwork.com/freelancers/~010219e25749223694', m, 35);
 
-    y = 52;
+    y = 50;
 
-    // --- Summary ---
-    text('PROFESSIONAL SUMMARY', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-    text('AI Full Stack Developer with 6+ years of experience crafting end-to-end solutions using React, Next.js, Node.js, Python, Flutter, and AI integration. Specializes in LLM integration, RAG systems, chatbots, and intelligent automation. Top Rated on Upwork with 100% Job Success and 48+ successful projects.', 10, 'normal');
-    lineBreak(10);
+    // Summary
+    w('PROFESSIONAL SUMMARY', 13, { bold: true, color: [108, 92, 231], space: 4 });
+    w("AI Full Stack Developer with 6+ years of experience crafting end-to-end solutions using React, Next.js, Node.js, Python, Flutter, and AI integration. Specializes in LLM integration, RAG systems, chatbots, and intelligent automation. Top Rated on Upwork with 100% Job Success and 48+ successful projects.", 10, { space: 3 });
+    sep(4);
 
-    // --- Skills ---
-    text('CORE SKILLS', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-
-    const skillGroups = [
-        ['AI/ML', 'OpenAI / Claude API, LangChain, LlamaIndex, Vector DBs, RAG, Fine-tuning'],
-        ['Frontend', 'Next.js, React, TypeScript, Tailwind CSS, Figma-to-Code'],
-        ['Backend', 'Node.js, Python, Flask, FastAPI, REST APIs, WebSockets'],
-        ['Mobile', 'Flutter, Dart, iOS & Android App Development'],
-        ['Cloud/DevOps', 'AWS, GCP, Cloudflare, Docker, CI/CD, VPS Deployment'],
-        ['Vibe Coding', 'Claude Code, Cursor AI, AI-assisted rapid prototyping'],
+    // Skills
+    w('CORE SKILLS', 13, { bold: true, color: [108, 92, 231], space: 4 });
+    const skills = [
+        ['AI/ML:', 'OpenAI / Claude API, LangChain, LlamaIndex, Vector DBs, RAG, Fine-tuning'],
+        ['Frontend:', 'Next.js, React, TypeScript, Tailwind CSS, Figma-to-Code'],
+        ['Backend:', 'Node.js, Python, Flask, FastAPI, REST APIs, WebSockets'],
+        ['Mobile:', 'Flutter, Dart, iOS & Android App Development'],
+        ['Cloud:', 'AWS, GCP, Cloudflare, Docker, CI/CD, VPS Deployment'],
+        ['Vibe Coding:', 'Claude Code, Cursor AI, AI-assisted rapid prototyping'],
     ];
-
-    skillGroups.forEach(([cat, skills]) => {
-        text(cat + ': ', 9, 'bold', [80, 80, 80]);
-        text(skills, 9, 'normal');
-        lineBreak(5);
+    skills.forEach(([c, s]) => {
+        w(c + ' ' + s, 9, { space: 2 });
     });
-    lineBreak(5);
+    sep(4);
 
-    // --- Experience ---
-    text('WORK EXPERIENCE', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-
+    // Work Experience
+    w('WORK EXPERIENCE', 13, { bold: true, color: [108, 92, 231], space: 4 });
     const jobs = [
-        ['iOS App Developer', 'OnePDF: Everything PDF', '2025 - Present', 'Published iOS PDF utility app on the Apple App Store for scanning, converting, merging, splitting, compressing, and signing PDFs.'],
-        ['Full Stack Developer', 'nichetraffickit.com', '2025 - Present', 'Built with Next.js, TypeScript, Vibe Coding & Go. Driving traffic solutions.'],
-        ['Mobile App Developer', 'aiinfluencergenerator.app', '2024 - Present', 'Cross-platform mobile apps with Flutter & Dart. AI-powered influencer tools for iOS/Android.'],
-        ['AI Full Stack Developer', 'Freelance / Self-Employed', '2024 - Present', 'AI-powered web apps for international clients. LLM integration, RAG systems, intelligent automation.'],
-        ['Founder', 'Fluttydev', '2020 - Present', 'Managing a team of 20+ skilled professionals in mobile/web development and blockchain.'],
+        ['iOS App Developer \u2014 OnePDF', '2025-Present', 'Published iOS PDF utility app on the Apple App Store.'],
+        ['Full Stack Developer \u2014 nichetraffickit.com', '2025-Present', 'Built with Next.js, TypeScript, Vibe Coding & Go.'],
+        ['Mobile App Developer \u2014 aiinfluencergenerator.app', '2024-Present', 'Cross-platform Flutter apps. AI-powered influencer tools.'],
+        ['AI Full Stack Developer \u2014 Freelance', '2024-Present', 'AI web apps for intl. clients. LLM, RAG, automation.'],
+        ['Founder \u2014 Fluttydev', '2020-Present', 'Managing team of 20+ in web, mobile & blockchain.'],
     ];
-
-    jobs.forEach(([role, company, period, desc]) => {
-        text(role + ' — ' + company, 10, 'bold');
-        text(period, 8, 'italic', [150, 150, 150]);
-        lineBreak(4);
-        text(desc, 9, 'normal');
-        lineBreak(7);
+    jobs.forEach(([title, period, desc]) => {
+        w(title, 10, { bold: true, space: 0 });
+        w(period, 8, { italic: true, color: [150, 150, 150], space: 1 });
+        w(desc, 9, { space: 3 });
+        sep(2);
     });
 
-    // --- Upwork Stats ---
-    if (y > 220) { doc.addPage(); y = margin; }
-    text('UPWORK HIGHLIGHTS', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-    text('100% Job Success | Top Rated | $10K+ Earned | 48 Jobs | 398 Hours', 10, 'normal');
-    lineBreak(4);
-    text('Avg Response: 0-4 hours | Rate: $25.00/hr | 30+ hrs/week availability', 10, 'normal');
-    lineBreak(10);
+    // Upwork
+    w('UPWORK HIGHLIGHTS', 13, { bold: true, color: [108, 92, 231], space: 4 });
+    w('100% Job Success | Top Rated | $10K+ Earned | 48 Jobs | 398 Hours', 10, { space: 1 });
+    w('Avg Response: 0-4 hours | Rate: $25.00/hr | 30+ hrs/week', 10, { space: 3 });
+    sep(4);
 
-    // --- Education ---
-    text('EDUCATION', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-    text("Master's in Computer Science — University of Science & Technology Bannu (2021-2022)", 10, 'normal');
-    lineBreak(5);
-    text('B.Eng Mechatronics Engineering — University of Engineering & Technology, Peshawar (2017-2020)', 10, 'normal');
-    lineBreak(10);
+    // Education
+    w('EDUCATION', 13, { bold: true, color: [108, 92, 231], space: 4 });
+    w("Master's in Computer Science \u2014 UST Bannu (2021-2022)", 10, { space: 1 });
+    w('B.Eng Mechatronics Engineering \u2014 UET Peshawar (2017-2020)', 10, { space: 3 });
+    sep(4);
 
-    // --- Client Testimonials ---
-    if (y > 220) { doc.addPage(); y = margin; }
-    text('CLIENT TESTIMONIALS', 13, 'bold', [108, 92, 231]);
-    lineBreak(8);
-
+    // Testimonials
+    w('CLIENT TESTIMONIALS', 13, { bold: true, color: [108, 92, 231], space: 4 });
     const reviews = [
-        '"Wonderful resource, very helpful and self starter. Outperformed my requirements."',
-        '"Umer was excellent to work with and extremely diligent."',
-        '"Umer simply put just gets it. I highly recommend him."',
-        '"Always a pleasure. Delivers on projects very fast."',
-        '"Very professional and always available. Over-delivers on tasks."',
-        '"Second successful job - will work together again."',
+        '\u201CWonderful resource, very helpful and self starter. Outperformed my requirements.\u201D',
+        '\u201CUmer was excellent to work with and extremely diligent.\u201D',
+        '\u201CUmer simply put just gets it. I highly recommend him.\u201D',
+        '\u201CAlways a pleasure. Delivers on projects very fast.\u201D',
+        '\u201CSecond successful job - will work together again.\u201D',
     ];
-
     reviews.forEach(r => {
-        text(r, 9, 'italic', [100, 100, 100]);
-        lineBreak(5);
+        w(r, 9, { italic: true, color: [100, 100, 100], space: 2 });
     });
 
-    // Save
     doc.save('Umer_Waqas_Resume.pdf');
 }
 
