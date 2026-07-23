@@ -490,13 +490,13 @@ img { max-width: 100%; display: block; }
 }
 
 .projects-grid {
-    columns: 3 340px;
-    column-gap: 28px;
+    columns: 3 300px;
+    column-gap: 18px;
 }
 
 .project-card {
     break-inside: avoid;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -579,34 +579,34 @@ img { max-width: 100%; display: block; }
 }
 
 .project-info {
-    padding: 24px;
+    padding: 14px 16px;
 }
 
 .project-info h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .project-info p {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-    line-height: 1.6;
+    font-size: 0.82rem;
+    margin-bottom: 10px;
+    line-height: 1.45;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .project-tags span {
-    padding: 4px 12px;
-    border-radius: 6px;
+    padding: 3px 8px;
+    border-radius: 4px;
     background: rgba(108, 92, 231, 0.1);
     color: var(--primary-light);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 500;
 }
 
