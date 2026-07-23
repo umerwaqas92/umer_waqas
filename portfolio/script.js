@@ -147,29 +147,53 @@ revealElements.forEach(el => {
 
 // ===== Contact Form =====
 const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const btn = contactForm.querySelector('button');
-    const originalText = btn.textContent;
-
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    // Simulate send - replace with actual form handling
-    setTimeout(() => {
-        btn.textContent = 'Message Sent!';
-        btn.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
-
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button');
+        const originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
         setTimeout(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.style.background = '';
-            contactForm.reset();
-        }, 2000);
-    }, 1500);
-});
+            btn.textContent = 'Message Sent!';
+            btn.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                btn.style.background = '';
+                contactForm.reset();
+            }, 2000);
+        }, 1500);
+    });
+}
+
+// ===== WhatsApp Modal =====
+function openWhatsAppModal() {
+    document.getElementById('whatsappModal').classList.add('active');
+}
+
+function closeWhatsAppModal(event) {
+    if (!event || !event.target || event.target.id === 'whatsappModal') {
+        document.getElementById('whatsappModal').classList.remove('active');
+    }
+}
+
+function submitWhatsAppForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('waName').value.trim();
+    const email = document.getElementById('waEmail').value.trim();
+    const project = document.getElementById('waProject').value.trim();
+    if (!name || !project) return;
+
+    let msg = `Hi Umer! I'd like to discuss a project:%0A%0A`;
+    msg += `Name: ${encodeURIComponent(name)}%0A`;
+    if (email) msg += `Email: ${encodeURIComponent(email)}%0A`;
+    msg += `Project Details: ${encodeURIComponent(project)}`;
+
+    window.open(`https://wa.me/923459347900?text=${msg}`, '_blank');
+    document.getElementById('whatsappModal').classList.remove('active');
+    document.getElementById('whatsappForm').reset();
+}
 
 // ===== Smooth Scroll for Anchor Links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

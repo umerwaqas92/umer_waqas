@@ -465,7 +465,7 @@
                     <p>um.waqas.khan@gmail.com</p>
                     <span class="contact-action">Send Email <i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="https://wa.me/923459347900?text=Hi%20Umer!%20I'd%20like%20to%20discuss%20a%20project%3A%0A%0AProject%20Type%3A%20%0ABudget%3A%20%0ATimeline%3A%20%0ADescription%3A%20" target="_blank" class="contact-card">
+                <a href="javascript:void(0)" onclick="openWhatsAppModal()" class="contact-card">
                     <div class="contact-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
                     <h3>WhatsApp Direct</h3>
                     <p>+92 345 9347900</p>
@@ -505,7 +505,36 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/923459347900?text=Hi%20Umer!%20I'd%20like%20to%20discuss%20a%20project%3A%0A%0AProject%20Type%3A%20%0ABudget%3A%20%0ATimeline%3A%20%0ADescription%3A%20" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <!-- WhatsApp Modal -->
+    <div class="whatsapp-modal-overlay" id="whatsappModal" onclick="if(event.target===this)closeWhatsAppModal()">
+        <div class="whatsapp-modal" onclick="event.stopPropagation()">
+            <button class="whatsapp-modal-close" onclick="closeWhatsAppModal()">&times;</button>
+            <div class="whatsapp-modal-header">
+                <i class="fab fa-whatsapp"></i>
+                <h3>Let's Discuss Your Project</h3>
+                <p>Fill in the details and I'll get back to you on WhatsApp.</p>
+            </div>
+            <form class="whatsapp-modal-form" id="whatsappForm" onsubmit="submitWhatsAppForm(event)">
+                <div class="form-group">
+                    <label>Your Name <span class="required">*</span></label>
+                    <input type="text" id="waName" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Email <span class="optional">(optional)</span></label>
+                    <input type="email" id="waEmail" placeholder="e.g. john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Project Details <span class="required">*</span></label>
+                    <textarea id="waProject" rows="4" placeholder="Describe your project, budget, timeline..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary wa-submit">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <a href="javascript:void(0)" onclick="openWhatsAppModal()" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
