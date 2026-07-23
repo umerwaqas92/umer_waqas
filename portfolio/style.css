@@ -523,7 +523,7 @@ img { max-width: 100%; display: block; }
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.1);
+    transform: none;
 }
 
 .project-placeholder {
