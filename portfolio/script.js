@@ -281,3 +281,17 @@ initProjectSlider('.askly-slide', '.askly-dot', '.askly-slider-btn.prev', '.askl
 initProjectSlider('.micamp-slide', '.micamp-dot', '.micamp-slider-btn.prev', '.micamp-slider-btn.next');
 initProjectSlider('.trendsnap-slide', '.trendsnap-dot', '.trendsnap-slider-btn.prev', '.trendsnap-slider-btn.next');
 
+// ===== Collapsible Timeline =====
+function toggleTimeline(header) {
+    const item = header.closest('.timeline-item');
+    const wasActive = item.classList.contains('active');
+
+    // Close all other items
+    document.querySelectorAll('.timeline-item.active').forEach(el => {
+        if (el !== item) el.classList.remove('active');
+    });
+
+    // Toggle clicked one
+    item.classList.toggle('active', !wasActive);
+}
+
