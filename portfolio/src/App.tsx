@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar onOpenModal={() => setModalOpen(true)} />
       <main>
         <Hero onOpenModal={() => setModalOpen(true)} />
         <WhyMe />
