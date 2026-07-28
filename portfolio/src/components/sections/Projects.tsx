@@ -92,23 +92,38 @@ export default function Projects() {
           {filteredProjects.map((project, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden bg-bg-card border border-border shadow-[0_8px_32px_rgba(108,92,231,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative project-card"
+              className="rounded-2xl overflow-hidden bg-bg-card border border-border shadow-[0_8px_32px_rgba(108,92,231,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative project-card flex flex-col justify-between"
             >
-              <ProjectSlider images={project.images} />
-              <div className="p-6">
-                <h3 className="font-bold text-[1.1rem] mb-2">{project.title}</h3>
-                <p className="text-text-muted text-[0.85rem] leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, j) => (
-                    <span
-                      key={j}
-                      className="text-[0.75rem] px-2.5 py-1 rounded-full bg-primary/5 text-primary font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div>
+                <ProjectSlider images={project.images} />
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="font-bold text-[1.1rem]">{project.title}</h3>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[0.8rem] text-primary hover:underline font-semibold shrink-0 flex items-center gap-1"
+                        title={`Visit ${project.title}`}
+                      >
+                        Visit Site <i className="fas fa-external-link-alt text-[0.7rem]" />
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-text-muted text-[0.85rem] leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, j) => (
+                      <span
+                        key={j}
+                        className="text-[0.75rem] px-2.5 py-1 rounded-full bg-primary/5 text-primary font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

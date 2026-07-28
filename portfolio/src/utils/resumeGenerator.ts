@@ -287,6 +287,12 @@ export async function generateResume() {
 
   const projectList = [
     {
+      name: 'AI Influencer Generator (aiinfluencergenerator.app)',
+      tech: 'Next.js, Python, AI Avatars, Remix Studio',
+      desc: 'Turn ideas into AI influencers with custom avatars & viral content studio.',
+      url: 'https://aiinfluencergenerator.app/',
+    },
+    {
       name: 'nichetraffickit.com',
       tech: 'Next.js, TypeScript, Go, AI-Assisted Dev',
       desc: 'Traffic analytics & solution platform with automated workflows.',

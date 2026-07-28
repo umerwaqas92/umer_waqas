@@ -32,9 +32,16 @@ export interface ProjectImage {
 export interface Project {
   title: string;
   description: string;
+  longDescription?: string;
+  features?: string[];
   tags: string[];
   category: string;
   images: ProjectImage[];
+  url?: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
+  githubUrl?: string;
+  featured?: boolean;
 }
 
 export interface Experience {
