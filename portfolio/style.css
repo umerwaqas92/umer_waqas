@@ -524,6 +524,39 @@ img { max-width: 100%; display: block; }
     background: var(--bg-card);
 }
 
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary-light);
+}
+
+.filter-btn.active {
+    background: var(--gradient-1);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(108, 92, 231, 0.25);
+}
+
 .projects-grid {
     columns: 3 300px;
     column-gap: 18px;
@@ -536,7 +569,7 @@ img { max-width: 100%; display: block; }
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: var(--transition);
+    transition: opacity 0.2s ease, transform var(--transition), border-color var(--transition), box-shadow var(--transition);
     display: inline-block;
     width: 100%;
     vertical-align: top;
