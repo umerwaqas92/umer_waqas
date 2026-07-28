@@ -318,11 +318,28 @@ async function downloadResume() {
             img.onload = () => {
                 try {
                     const canvas = document.createElement('canvas');
-                    canvas.width = img.naturalWidth;
-                    canvas.height = img.naturalHeight;
+                    const size = 300;
+                    canvas.width = size;
+                    canvas.height = size;
                     const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    resolve(canvas.toDataURL('image/jpeg', 0.85));
+
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.clip();
+
+                    const aspect = img.naturalWidth / img.naturalHeight;
+                    let dw = size, dh = size, dx = 0, dy = 0;
+                    if (aspect > 1) {
+                        dw = size * aspect;
+                        dx = -(dw - size) / 2;
+                    } else {
+                        dh = size / aspect;
+                        dy = -(dh - size) / 2;
+                    }
+
+                    ctx.drawImage(img, dx, dy, dw, dh);
+                    resolve(canvas.toDataURL('image/png'));
                 } catch (e) { resolve(null); }
             };
             img.onerror = () => resolve(null);
@@ -357,11 +374,7 @@ async function downloadResume() {
             // Try to add profile photo to the header
             const photoData = await loadImage('umer.jpg');
             if (photoData) {
-                // Draw a white circular frame
-                doc.setFillColor(255, 255, 255);
-                doc.circle(175, 20, 14, 'F');
-                // Add photo inside (will be square, frame masks the edges visually)
-                doc.addImage(photoData, 'JPEG', 161, 6, 28, 28);
+                doc.addImage(photoData, 'PNG', 161, 6, 28, 28);
                 // Thin border ring
                 doc.setDrawColor(255, 255, 255);
                 doc.setLineWidth(1.5);

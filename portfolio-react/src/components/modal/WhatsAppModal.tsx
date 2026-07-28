@@ -8,13 +8,15 @@ interface Props {
 
 export default function WhatsAppModal({ isOpen, onClose }: Props) {
   const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!name.trim() || !message.trim()) return
-    handleWhatsappSubmit(name.trim(), message.trim())
+    handleWhatsappSubmit(name.trim(), email.trim(), message.trim())
     setName('')
+    setEmail('')
     setMessage('')
     onClose()
   }
@@ -44,33 +46,45 @@ export default function WhatsAppModal({ isOpen, onClose }: Props) {
           <div className="w-14 h-14 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center text-[1.5rem] mx-auto mb-4">
             <i className="fab fa-whatsapp" />
           </div>
-          <h3 className="text-[1.3rem] font-bold">Let's Chat on WhatsApp</h3>
+          <h3 className="text-[1.3rem] font-bold">Let's Discuss Your Project</h3>
           <p className="text-text-muted text-[0.9rem] mt-1">
-            Send me a message and I'll get back to you quickly.
+            Fill in the details and I'll get back to you on WhatsApp.
           </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-[0.85rem] font-medium text-text mb-1.5">
-              Your Name
+              Your Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
+              placeholder="e.g. John Doe"
               required
               className="w-full px-4 py-3 rounded-xl border border-border text-[0.95rem] outline-none focus:border-primary transition-colors bg-bg"
             />
           </div>
           <div>
             <label className="block text-[0.85rem] font-medium text-text mb-1.5">
-              Message
+              Your Email <span className="text-text-muted font-normal">(optional)</span>
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e.g. john@example.com"
+              className="w-full px-4 py-3 rounded-xl border border-border text-[0.95rem] outline-none focus:border-primary transition-colors bg-bg"
+            />
+          </div>
+          <div>
+            <label className="block text-[0.85rem] font-medium text-text mb-1.5">
+              Project Details <span className="text-red-500">*</span>
             </label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Hi Umer! I'd like to discuss a project..."
+              placeholder="Describe your project, budget, timeline..."
               required
               rows={4}
               className="w-full px-4 py-3 rounded-xl border border-border text-[0.95rem] outline-none focus:border-primary transition-colors bg-bg resize-none"

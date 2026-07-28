@@ -20,8 +20,12 @@ async function getProfileImageDataUrl(): Promise<string | null> {
           const ctx = canvas.getContext('2d')
           if (!ctx) return resolve(null)
 
+          // Fill white background so JPEG/PNG default background is white, not black
+          ctx.fillStyle = '#FFFFFF'
+          ctx.fillRect(0, 0, size, size)
+
           ctx.beginPath()
-          ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2)
+          ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2)
           ctx.closePath()
           ctx.clip()
 
@@ -39,7 +43,7 @@ async function getProfileImageDataUrl(): Promise<string | null> {
           }
 
           ctx.drawImage(img, dx, dy, dw, dh)
-          resolve(canvas.toDataURL('image/jpeg', 0.9))
+          resolve(canvas.toDataURL('image/png'))
         } catch {
           resolve(null)
         }
@@ -76,8 +80,11 @@ export async function generateResume() {
 
   let yPos = 52
   if (imgData) {
-    pdf.addImage(imgData, 'JPEG', pageWidth / 2 - 16, 46, 32, 32, undefined, 'FAST')
-    yPos = 84
+    pdf.addImage(imgData, 'PNG', pageWidth / 2 - 16, 46, 32, 32, undefined, 'FAST')
+    pdf.setDrawColor(108, 92, 231)
+    pdf.setLineWidth(0.6)
+    pdf.circle(pageWidth / 2, 62, 16, 'S')
+    yPos = 86
   }
 
   // Summary

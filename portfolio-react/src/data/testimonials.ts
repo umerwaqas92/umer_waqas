@@ -52,6 +52,46 @@ export const testimonials: Testimonial[] = [
   },
   {
     stars: 5,
+    quote: '"Umer simply put just gets it. I highly recommend him."',
+    tags: [{ label: 'Clear Communicator', color: 'green' }],
+    job: 'Zapier & ChatGPT Integration — Jul 2023',
+  },
+  {
+    stars: 5,
+    quote: '"Very professional developer and is always available for meetings and over-delivers on tasks. Handles work in a timely manner."',
+    tags: [
+      { label: 'Professional', color: 'purple' },
+      { label: 'Collaborative', color: 'blue' },
+      { label: 'Committed to Quality', color: 'green' },
+    ],
+    job: 'Flutter App — Nov 2022',
+  },
+  {
+    stars: 5,
+    quote: '"Second successful job - will work together again"',
+    tags: [],
+    job: 'AI SaaS MVP — Oct-Nov 2024 · $599',
+  },
+  {
+    stars: 5,
+    quote: '"Happy with the service, will offer 2 more"',
+    tags: [],
+    job: 'AI SaaS MVP — Oct 2024 · $599',
+  },
+  {
+    stars: 5,
+    quote: '"He did the good work on our project, Thank you!"',
+    tags: [],
+    job: 'AI ChatBot / OpenAI — Mar-Aug 2023 · $1,150',
+  },
+  {
+    stars: 5,
+    quote: '"Excellent developer and cooperative. I hire him again. Thanks"',
+    tags: [{ label: 'Committed to Quality', color: 'green' }],
+    job: 'Website Developer — Jan 2023',
+  },
+  {
+    stars: 5,
     quote: '"Umer is a master developer when it comes to app development. Possibly the best in the world!!!"',
     tags: [{ label: 'Committed to Quality', color: 'green' }],
     job: 'Multi-Language Translation App — Apr 2022',
