@@ -10,7 +10,7 @@ interface Props {
 export default function SectionHeader({ tag, title, subtitle, icon }: Props) {
   return (
     <div className="text-center mb-16 relative z-10">
-      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-[0.8rem] tracking-wider uppercase mb-4 shadow-sm border border-primary/20">
+      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-[0.8rem] tracking-wider uppercase mb-4 border border-primary/20">
         {icon && <i className={`fas ${icon} text-[0.75rem]`} />}
         {tag}
       </span>
@@ -22,7 +22,7 @@ export default function SectionHeader({ tag, title, subtitle, icon }: Props) {
           {subtitle}
         </p>
       )}
-      <div className="w-[80px] h-[4px] gradient-primary rounded-full mx-auto shadow-sm shadow-primary/30" />
+      <div className="w-[80px] h-[4px] gradient-primary rounded-full mx-auto" />
     </div>
   )
 }

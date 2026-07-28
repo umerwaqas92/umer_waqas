@@ -7,10 +7,10 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[0] }) {
     <div
       className={`rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 relative flex flex-col justify-between ${
         t.featured
-          ? 'gradient-primary text-white shadow-xl shadow-primary/20'
+          ? 'gradient-primary text-white shadow-primary/20'
           : t.isOld
           ? 'bg-white/70 border border-slate-200/80 opacity-75'
-          : 'bg-white border border-slate-200/80 shadow-sm hover:shadow-xl'
+          : 'bg-white border border-slate-200/80 hover:shadow-xl'
       }`}
     >
       <div>
@@ -105,7 +105,7 @@ export default function WhyMe() {
           <div className="flex justify-center mb-12">
             <button
               onClick={handleToggle}
-              className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-slate-100 hover:bg-slate-200/80 text-slate-800 font-semibold text-[0.92rem] transition-all cursor-pointer border border-slate-200/80 hover:border-slate-300 shadow-sm hover:shadow active:scale-95 group"
+              className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-slate-100 hover:bg-slate-200/80 text-slate-800 font-semibold text-[0.92rem] transition-all cursor-pointer border border-slate-200/80 hover:border-slate-300 hover:shadow active:scale-95 group"
             >
               <span>
                 {isExpanded ? 'Show Less Reviews' : `View All ${testimonials.length} Reviews`}
@@ -120,7 +120,7 @@ export default function WhyMe() {
         )}
 
         {/* High Converting CTA Box */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white text-center relative overflow-hidden shadow-2xl border border-slate-800">
+        <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white text-center relative overflow-hidden border border-slate-800">
           <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-2xl mx-auto">
             <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[0.8rem] mb-3">
@@ -133,7 +133,7 @@ export default function WhyMe() {
             <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="#contact"
-                className="gradient-primary text-white px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                className="gradient-primary text-white px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 transition-all duration-300"
               >
                 <i className="fas fa-paper-plane text-[0.85rem]" /> Let's Work Together
               </a>

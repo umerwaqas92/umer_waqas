@@ -80,7 +80,7 @@ export default function Navbar({ onOpenModal }: Props) {
                   setMenuOpen(false)
                   onOpenModal()
                 }}
-                className="gradient-primary text-white px-5 py-2 rounded-full font-bold text-[0.85rem] hover:shadow-md hover:shadow-primary/20 transition-all cursor-pointer border-none max-lg:w-full max-lg:py-3"
+                className="gradient-primary text-white px-5 py-2 rounded-full font-bold text-[0.85rem] transition-all cursor-pointer border-none max-lg:w-full max-lg:py-3"
               >
                 Hire Me
               </button>

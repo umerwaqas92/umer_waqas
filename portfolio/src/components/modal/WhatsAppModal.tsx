@@ -35,7 +35,7 @@ export default function WhatsAppModal({ isOpen, onClose }: Props) {
         onClick={onClose}
       />
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl animate-[fadeInUp_0.3s_ease]">
+      <div className="relative bg-white rounded-2xl p-8 w-full max-w-md animate-[fadeInUp_0.3s_ease]">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full bg-bg-elevated flex items-center justify-center text-text-muted hover:text-text cursor-pointer border-none"

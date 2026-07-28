@@ -32,7 +32,7 @@ export default function Contact({ onOpenModal }: Props) {
 
         {/* Toast Notification */}
         {toastMessage && (
-          <div className="fixed bottom-6 right-6 z-[3000] bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-[fadeInUp_0.3s_ease] border border-slate-700">
+          <div className="fixed bottom-6 right-6 z-[3000] bg-slate-900 text-white px-5 py-3 rounded-2xl flex items-center gap-3 animate-[fadeInUp_0.3s_ease] border border-slate-700">
             <i className="fas fa-check-circle text-emerald-400 text-[1.1rem]" />
             <span className="text-[0.9rem] font-medium">{toastMessage}</span>
           </div>
@@ -58,11 +58,11 @@ export default function Contact({ onOpenModal }: Props) {
               <div
                 key={i}
                 onClick={handleClick}
-                className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-sm text-center cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl group flex flex-col justify-between"
+                className="p-7 rounded-3xl bg-white border border-slate-200/80 text-center cursor-pointer transition-all duration-300 hover:-translate-y-1.5 group flex flex-col justify-between"
               >
                 <div>
                   <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center text-[1.4rem] mx-auto mb-5 transition-all duration-300 shadow-sm ${
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center text-[1.4rem] mx-auto mb-5 transition-all duration-300 ${
                       isWhatsapp
                         ? 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white'
                         : isUpwork
@@ -103,7 +103,7 @@ export default function Contact({ onOpenModal }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={link.title}
-                className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-2xs flex items-center justify-center text-slate-600 hover:gradient-primary hover:text-white hover:border-transparent transition-all duration-300 text-[1.05rem]"
+                className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:gradient-primary hover:text-white hover:border-transparent transition-all duration-300 text-[1.05rem]"
               >
                 <i className={link.icon} />
               </a>

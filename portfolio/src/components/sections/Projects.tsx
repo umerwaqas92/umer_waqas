@@ -20,7 +20,7 @@ function ProjectSlider({ images, onOpenModal }: { images: { src: string; alt: st
           <div key={i} className="min-w-full relative">
             <img src={img.src} alt={img.alt} className="w-full h-52 object-cover" />
             <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="bg-white/90 text-slate-900 text-[0.8rem] font-bold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+              <span className="bg-white/90 text-slate-900 text-[0.8rem] font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
                 <i className="fas fa-expand text-primary" /> View Details & Screenshots
               </span>
             </div>
@@ -98,7 +98,7 @@ export default function Projects() {
                 onClick={() => setFilter(f.value)}
                 className={`px-5 py-2.5 rounded-full text-[0.88rem] font-medium cursor-pointer border-none transition-all duration-300 flex items-center gap-2 ${
                   filter === f.value
-                    ? 'gradient-primary text-white shadow-lg shadow-primary/20 font-semibold'
+                    ? 'gradient-primary text-white font-semibold'
                     : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 shadow-2xs'
                 }`}
               >
@@ -120,7 +120,7 @@ export default function Projects() {
           {filteredProjects.map((project, i) => (
             <div
               key={i}
-              className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative flex flex-col justify-between"
+              className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 transition-all duration-300 hover:-translate-y-1.5 relative flex flex-col justify-between"
             >
               <div>
                 <ProjectSlider

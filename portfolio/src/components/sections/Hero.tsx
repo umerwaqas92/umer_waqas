@@ -33,7 +33,7 @@ export default function Hero({ onOpenModal }: Props) {
       <div className="max-w-6xl mx-auto w-full grid grid-cols-[1.3fr_1fr] gap-12 items-center max-lg:grid-cols-1 max-lg:text-center max-lg:gap-10 relative z-10">
         {/* Text Area */}
         <div className="animate-[fadeInUp_0.8s_ease]">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-[0.85rem] mb-4 border border-primary/20 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-[0.85rem] mb-4 border border-primary/20">
             <span className="w-2 h-2 rounded-full bg-emerald-500 status-dot" />
             <span>Available for Custom AI & Mobile Projects</span>
           </div>
@@ -58,8 +58,7 @@ export default function Hero({ onOpenModal }: Props) {
             {techRibbon.map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 text-slate-700 text-[0.8rem] font-medium border border-slate-200 shadow-2xs"
-              >
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 text-slate-700 text-[0.8rem] font-medium border border-slate-200">
                 <i className={`fas ${item.icon} text-primary text-[0.75rem]`} />
                 {item.name}
               </span>
@@ -70,13 +69,13 @@ export default function Hero({ onOpenModal }: Props) {
           <div className="flex gap-4 flex-wrap max-sm:flex-col max-sm:w-full">
             <a
               href="#projects"
-              className="gradient-primary text-white px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 max-sm:justify-center"
+              className="gradient-primary text-white px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 transition-all duration-300 hover:-translate-y-0.5 max-sm:justify-center"
             >
               <i className="fas fa-layer-group text-[0.85rem]" /> View Projects
             </a>
             <button
               onClick={onOpenModal}
-              className="border-2 border-primary text-primary px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 hover:bg-primary hover:text-white transition-all duration-300 max-sm:justify-center cursor-pointer shadow-sm hover:shadow-md"
+              className="border-2 border-primary text-primary px-8 py-3.5 rounded-full font-semibold text-[0.95rem] inline-flex items-center gap-2 hover:bg-primary hover:text-white transition-all duration-300 max-sm:justify-center cursor-pointer"
             >
               <i className="fab fa-whatsapp text-[1.05rem]" /> Let's Talk
             </button>
@@ -98,7 +97,7 @@ export default function Hero({ onOpenModal }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={link.title}
-                className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:gradient-primary hover:text-white hover:border-transparent transition-all duration-300 text-[1.05rem] shadow-2xs hover:scale-110"
+                className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:gradient-primary hover:text-white hover:border-transparent transition-all duration-300 text-[1.05rem] hover:scale-110"
               >
                 <i className={link.icon} />
               </a>
@@ -110,15 +109,15 @@ export default function Hero({ onOpenModal }: Props) {
         <div className="flex flex-col items-center max-lg:row-start-1">
           <div className="relative">
             {/* Outer Glowing Ring */}
-            <div className="w-[290px] h-[290px] rounded-full p-1.5 gradient-primary shadow-2xl shadow-primary/30 max-md:w-[230px] max-md:h-[230px] animate-float relative">
+            <div className="w-[290px] h-[290px] rounded-full p-1.5 gradient-primary max-md:w-[230px] max-md:h-[230px] animate-float relative">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white bg-slate-100">
                 <img src="umer.jpg" alt="Umer Waqas" className="w-full h-full object-cover" />
               </div>
             </div>
 
             {/* Floating Experience Badge */}
-            <div className="absolute -bottom-2 -left-4 bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-2xl shadow-xl flex items-center gap-3 animate-[fadeInUp_1s_ease]">
-              <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center text-white text-[0.9rem] font-extrabold shadow-sm">
+            <div className="absolute -bottom-2 -left-4 bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-2xl flex items-center gap-3 animate-[fadeInUp_1s_ease]">
+              <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center text-white text-[0.9rem] font-extrabold">
                 6+
               </div>
               <div>
@@ -128,7 +127,7 @@ export default function Hero({ onOpenModal }: Props) {
             </div>
 
             {/* Floating Top Rated Badge */}
-            <div className="absolute -top-2 -right-4 bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2.5 animate-[fadeInUp_1.2s_ease]">
+            <div className="absolute -top-2 -right-4 bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-2xl flex items-center gap-2.5 animate-[fadeInUp_1.2s_ease]">
               <i className="fas fa-crown text-amber-500 text-[1.1rem]" />
               <div>
                 <p className="text-[0.75rem] font-bold text-slate-900 leading-tight">Top Rated</p>
@@ -144,9 +143,9 @@ export default function Hero({ onOpenModal }: Props) {
         {speedStats.map((stat, i) => (
           <div
             key={i}
-            className="flex items-center gap-3.5 p-4 rounded-2xl glass-card glass-card-hover border border-slate-200/80 shadow-xs"
+            className="flex items-center gap-3.5 p-4 rounded-2xl glass-card glass-card-hover border border-slate-200/80"
           >
-            <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center text-white text-[1rem] shrink-0 shadow-md shadow-primary/20">
+            <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center text-white text-[1rem] shrink-0">
               <i className={`fas ${stat.icon}`} />
             </div>
             <div>

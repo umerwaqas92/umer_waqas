@@ -25,7 +25,7 @@ export default function WhatsAppFloat({ onOpen }: Props) {
   return (
     <button
       onClick={onOpen}
-      className={`fixed bottom-6 right-6 z-[999] w-14 h-14 rounded-full bg-green-500 text-white text-[1.5rem] shadow-lg hover:bg-green-600 hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer border-none flex items-center justify-center ${
+      className={`fixed bottom-6 right-6 z-[999] w-14 h-14 rounded-full bg-green-500 text-white text-[1.5rem] hover:bg-green-600 hover:scale-110 transition-all duration-300 cursor-pointer border-none flex items-center justify-center ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 pointer-events-none'
       }`}
       aria-label="Chat on WhatsApp"

@@ -17,7 +17,7 @@ export default function ProjectModal({ project, onClose }: Props) {
       />
 
       {/* Modal Dialog */}
-      <div className="relative bg-white rounded-3xl p-6 sm:p-8 w-full max-w-3xl shadow-2xl z-10 my-8 max-h-[90vh] overflow-y-auto border border-border/80 animate-[fadeInUp_0.3s_ease]">
+      <div className="relative bg-white rounded-3xl p-6 sm:p-8 w-full max-w-3xl z-10 my-8 max-h-[90vh] overflow-y-auto border border-border/80 animate-[fadeInUp_0.3s_ease]">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -126,7 +126,7 @@ export default function ProjectModal({ project, onClose }: Props) {
               href={project.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 hover:bg-slate-800 transition-all shadow-md"
+              className="px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 hover:bg-slate-800 transition-all"
             >
               <i className="fab fa-apple text-[1.1rem]" /> View on App Store
             </a>
@@ -136,7 +136,7 @@ export default function ProjectModal({ project, onClose }: Props) {
               href={project.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full bg-emerald-600 text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 hover:bg-emerald-700 transition-all shadow-md"
+              className="px-6 py-3 rounded-full bg-emerald-600 text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 hover:bg-emerald-700 transition-all" 
             >
               <i className="fab fa-google-play text-[1rem]" /> View on Google Play
             </a>
@@ -146,7 +146,7 @@ export default function ProjectModal({ project, onClose }: Props) {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full gradient-primary text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all"
+              className="px-6 py-3 rounded-full gradient-primary text-white font-semibold text-[0.9rem] inline-flex items-center gap-2 transition-all"
             >
               <i className="fas fa-external-link-alt text-[0.85rem]" /> Visit Live App / Website
             </a>

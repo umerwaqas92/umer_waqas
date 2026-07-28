@@ -50,10 +50,10 @@ export default function Experience() {
             return (
               <div key={i} className="relative pl-10 pb-8 border-l-2 border-slate-200 last:pb-0">
                 {/* Node Dot */}
-                <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full gradient-primary border-4 border-white shadow-md shadow-primary/30" />
+                <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full gradient-primary border-4 border-white" />
 
                 {/* Content Card */}
-                <div className="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/80 shadow-2xs hover:shadow-md transition-all">
+                <div className="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/80 transition-all">
                   <div
                     className="flex items-center justify-between cursor-pointer select-none"
                     onClick={() => toggle(i)}
@@ -69,7 +69,7 @@ export default function Experience() {
                     </div>
 
                     <button
-                      className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer border-none shadow-2xs shrink-0"
+                      className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer border-none shrink-0"
                       aria-label="Toggle details"
                     >
                       <i

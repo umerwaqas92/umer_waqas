@@ -17,7 +17,7 @@ export default function ImageLightboxModal({ src, alt, onClose }: Props) {
         <i className="fas fa-times" />
       </button>
 
-      <div className="max-w-5xl max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl border border-white/10 relative">
+      <div className="max-w-5xl max-h-[90vh] overflow-hidden rounded-2xl border border-white/10 relative">
         <img
           src={src}
           alt={alt || 'Image Preview'}

@@ -38,11 +38,11 @@ export default function Skills() {
           {primaryStack.map((item, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white shadow-xl relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 border border-slate-800"
+              className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 border border-slate-800"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/25 transition-all" />
               <div className="flex items-center justify-between mb-4">
-                <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center text-white text-[1.1rem] shadow-md shadow-primary/30">
+                <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center text-white text-[1.1rem]">
                   <i className={`fas ${item.icon}`} />
                 </div>
                 <span className="text-[0.7rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-primary-light border border-white/10">
@@ -69,7 +69,7 @@ export default function Skills() {
               onClick={() => setActiveCategory(tab.id)}
               className={`px-5 py-2 rounded-full text-[0.88rem] font-medium cursor-pointer border-none transition-all duration-300 ${
                 activeCategory === tab.id
-                  ? 'gradient-primary text-white shadow-md shadow-primary/20 font-semibold'
+                  ? 'gradient-primary text-white font-semibold'
                   : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
@@ -86,15 +86,15 @@ export default function Skills() {
           {filteredCategories.map((cat, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/80 shadow-xs text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/80 text-center hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center text-white text-[1.2rem] mx-auto mb-4 shadow-md shadow-primary/20 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center text-white text-[1.2rem] mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <i className={`fas ${cat.icon}`} />
               </div>
               <h3 className="font-bold text-[1rem] text-slate-900 mb-3">{cat.title}</h3>
               <ul className="space-y-2">
                 {cat.skills.map((skill, j) => (
-                  <li key={j} className="text-slate-600 text-[0.85rem] font-medium bg-white py-1 px-3 rounded-lg border border-slate-200/60 shadow-2xs">
+                  <li key={j} className="text-slate-600 text-[0.85rem] font-medium bg-white py-1 px-3 rounded-lg border border-slate-200/60">
                     {skill}
                   </li>
                 ))}
