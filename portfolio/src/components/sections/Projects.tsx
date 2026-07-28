@@ -18,14 +18,14 @@ function ProjectSlider({ images, onOpenModal, category }: { images: { src: strin
   }
 
   return (
-    <div className="relative group overflow-hidden rounded-[1.5rem] bg-slate-900 shadow-xs cursor-pointer border border-slate-200/60 w-full">
+    <div className="relative group overflow-hidden rounded-[1.5rem] bg-white shadow-xs cursor-pointer border border-slate-200/80 w-full">
       <div
         className="flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
         onClick={onOpenModal}
       >
         {images.map((img, i) => (
-          <div key={i} className={`min-w-full relative overflow-hidden ${getAspectClass(category)} bg-slate-950/90 flex items-center justify-center`}>
+          <div key={i} className={`min-w-full relative overflow-hidden ${getAspectClass(category)} bg-white flex items-center justify-center`}>
             <img 
               src={img.src} 
               alt={img.alt} 
@@ -79,7 +79,7 @@ function ProjectSlider({ images, onOpenModal, category }: { images: { src: strin
                 key={i}
                 onClick={(e) => { e.stopPropagation(); goTo(i); }}
                 className={`h-1.5 rounded-full cursor-pointer border-none transition-all duration-300 ${
-                  i === current ? 'gradient-primary w-5' : 'bg-white/70 hover:bg-white w-1.5'
+                  i === current ? 'gradient-primary w-5' : 'bg-slate-300 hover:bg-slate-400 w-1.5'
                 }`}
                 aria-label={`Go to screenshot ${i + 1}`}
               />
@@ -101,7 +101,7 @@ export default function Projects() {
       : projects.filter((p) => p.category.includes(filter))
 
   return (
-    <section id="projects" className="py-24 px-6 bg-slate-50/70">
+    <section id="projects" className="py-24 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           tag="Portfolio Showcase"
