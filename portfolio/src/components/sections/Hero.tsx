@@ -135,6 +135,13 @@ export default function Hero({ onOpenModal }: Props) {
               </div>
             </div>
           </div>
+
+          {/* Trust Image below profile */}
+          <img
+            src="whatsapp-upwork.jpeg"
+            alt="Upwork Profile Screenshot"
+            className="w-full max-w-[290px] rounded-2xl border border-slate-200/60 shadow-sm mt-4 object-cover"
+          />
         </div>
       </div>
 
