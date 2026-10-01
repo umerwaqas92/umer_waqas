@@ -31,15 +31,16 @@ If you are developing a production application, we recommend enabling type-aware
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
 
-### Job-specific links
+### Resume-specific links
 
-Use `?job=1` (or `?job=full-stack`) for Full Stack Software Engineer,
-`?job=2` (or `?job=ai`) for AI Engineer, and `?job=3` (or `?job=flutter`)
-for Flutter Mobile Developer. These links personalize the hero, summary, browser
-metadata, initial skills filter, footer, and generated resume title, summary,
-skills order, and filename. Employment history stays unchanged.
+Use `?resume=1` (or `?resume=full-stack`) for Full Stack Developer,
+`?resume=2` (or `?resume=ai`) for AI Software Engineer, and
+`?resume=3` (or `?resume=flutter`) for Flutter Developer. These links personalize
+the hero, summary, browser metadata, initial skills filter, footer, and generated
+resume title, summary, skills order, and filename. Employment history stays
+unchanged.
 
-Without a supported job value, the general portfolio and existing static resume
-are used. Edit `src/data/jobProfiles.ts` to adjust the presets. Metadata is updated
-in the browser; crawlers that do not execute JavaScript still see the general
-metadata from `index.html`.
+Without a supported `resume` value, the general portfolio and existing static
+resume are used. Edit `src/data/jobProfiles.ts` to adjust the presets. Metadata is
+updated in the browser; crawlers that do not execute JavaScript still see the
+general metadata from `index.html`.
