@@ -1,3 +1,4 @@
+import type { JobProfile } from '../../data/jobProfiles'
 import { useCounter } from '../../hooks/useCounter'
 import SectionHeader from '../ui/SectionHeader'
 
@@ -26,7 +27,7 @@ const pillars = [
   { icon: 'fa-server', title: 'Full-Stack', desc: 'React, Next.js, Node.js, Python & Go.' },
 ]
 
-export default function About() {
+export default function About({ job }: { job?: JobProfile }) {
   return (
     <section id="about" className="py-14 sm:py-16 px-6 bg-slate-50/70">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -38,7 +39,7 @@ export default function About() {
               Transforming Ideas Into <span className="gradient-text">Intelligent Applications</span>
             </>
           }
-          subtitle="AI Full Stack Developer specializing in AI workflows, cross-platform mobile apps, and robust backends."
+          subtitle={job?.summary ?? "AI Full Stack Developer specializing in AI workflows, cross-platform mobile apps, and robust backends."}
         />
 
         {/* Compact Grid: Bio + Image + Pillars */}

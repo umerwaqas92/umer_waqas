@@ -1,6 +1,7 @@
+import type { JobProfile } from '../../data/jobProfiles'
 import { socialLinks } from '../../data/social'
 
-export default function Footer() {
+export default function Footer({ job }: { job?: JobProfile }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -13,7 +14,7 @@ export default function Footer() {
             Umer Waqas
           </a>
           <p className="text-slate-400 text-[0.88rem] mt-1 max-w-md">
-            AI Full Stack Developer & Flutter Specialist engineering modern digital products with Claude Code & Cursor.
+            {job ? `${job.title} — ${job.focus}` : 'AI Full Stack Developer & Flutter Specialist engineering modern digital products with Claude Code & Cursor.'}
           </p>
         </div>
 

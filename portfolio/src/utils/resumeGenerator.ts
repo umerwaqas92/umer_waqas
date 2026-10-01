@@ -1,3 +1,4 @@
+import type { JobProfile } from '../data/jobProfiles'
 import { jsPDF } from 'jspdf'
 
 async function getProfileImageDataUrl(): Promise<string | null> {
@@ -57,7 +58,7 @@ async function getProfileImageDataUrl(): Promise<string | null> {
   return null
 }
 
-export async function generateResume() {
+export async function generateResume(job?: JobProfile) {
   const pdf = new jsPDF('p', 'mm', 'a4')
   const pageWidth = pdf.internal.pageSize.getWidth()
   const pageHeight = pdf.internal.pageSize.getHeight()
@@ -68,7 +69,7 @@ export async function generateResume() {
   const mainWidth = pageWidth - mainX - 15
   let y = 66
 
-  pdf.setProperties({ title: 'Umer Waqas | Resume', author: 'Umer Waqas' })
+  pdf.setProperties({ title: `Umer Waqas | ${job?.title ?? 'Resume'}`, author: 'Umer Waqas' })
 
   function textStyle(size: number, bold = false, color = ink) {
     pdf.setFont('helvetica', bold ? 'bold' : 'normal')
@@ -103,7 +104,7 @@ export async function generateResume() {
     textStyle(12, true)
     pdf.text('Umer Waqas', 15, 22)
     textStyle(9, false, muted)
-    pdf.text('AI Full Stack Developer / Continued', 15, 29)
+    pdf.text(`${job?.title ?? 'AI Full Stack Developer'} / Continued`, 15, 29)
     y = 48
   }
 
@@ -123,9 +124,9 @@ export async function generateResume() {
   textStyle(30, true)
   pdf.text('Umer Waqas', 15, 25)
   textStyle(12, false, accent)
-  pdf.text('AI Full Stack Developer', 15, 34)
+  pdf.text(job?.title ?? 'AI Full Stack Developer', 15, 34)
   textStyle(9, false, muted)
-  pdf.text('Web platforms / Mobile applications / AI integration', 15, 43)
+  pdf.text(job?.focus ?? 'Web platforms / Mobile applications / AI integration', 15, 43)
   const image = await getProfileImageDataUrl()
   if (image) pdf.addImage(image, 'PNG', pageWidth - 45, 15, 29, 29, undefined, 'FAST')
   pdf.setDrawColor(213, 224, 221)
@@ -162,6 +163,7 @@ export async function generateResume() {
     ['Mobile apps', 'Flutter, Dart, iOS & Android'],
     ['AI workflows', 'Claude Code, Cursor AI, rapid prototyping'],
   ]
+  if (job) skills.sort((a, b) => job.skillOrder.indexOf(a[0]) - job.skillOrder.indexOf(b[0]))
   for (const [label, value] of skills) {
     textStyle(8.5, true)
     pdf.text(label, 15, sidebarY)
@@ -175,7 +177,7 @@ export async function generateResume() {
 
   section('Profile', 35)
   y = paragraph(
-    'AI Full Stack Developer crafting end-to-end solutions with React, Next.js, Node.js, Python, Flutter, and AI integration. Leveraging AI-assisted development (Claude Code, Cursor AI) to ship 10x faster. Top Rated on Upwork with 100% Job Success across 48+ international projects.',
+    job?.summary ?? 'AI Full Stack Developer crafting end-to-end solutions with React, Next.js, Node.js, Python, Flutter, and AI integration. Leveraging AI-assisted development (Claude Code, Cursor AI) to ship 10x faster. Top Rated on Upwork with 100% Job Success across 48+ international projects.',
     mainX, y, mainWidth,
   ) + 4
 
@@ -287,5 +289,5 @@ export async function generateResume() {
     pdf.text('UMER WAQAS / RESUME', mainX, pageHeight - 8)
     pdf.text(`${page} / ${pageCount}`, pageWidth - 15, pageHeight - 8, { align: 'right' })
   }
-  pdf.save('Umer_Waqas_Resume.pdf')
+  pdf.save(job ? `Umer_Waqas_${job.slug.replaceAll('-', '_')}_Resume.pdf` : 'Umer_Waqas_Resume.pdf')
 }

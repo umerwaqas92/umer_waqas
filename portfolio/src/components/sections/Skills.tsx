@@ -1,9 +1,10 @@
+import type { JobProfile } from '../../data/jobProfiles'
 import { useState } from 'react'
 import { skillCategories } from '../../data/skills'
 import SectionHeader from '../ui/SectionHeader'
 
-export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState<string>('all')
+export default function Skills({ job }: { job?: JobProfile }) {
+  const [activeCategory, setActiveCategory] = useState<string>(job?.skillFilter ?? 'all')
 
   const filteredCategories =
     activeCategory === 'all'
@@ -25,7 +26,7 @@ export default function Skills() {
               Tech Stack & <span className="gradient-text">Expertise</span>
             </>
           }
-          subtitle="Modern tools, frameworks, and AI technologies I leverage to build scalable products."
+          subtitle={job ? `${job.title}: ${job.focus}` : "Modern tools, frameworks, and AI technologies I leverage to build scalable products."}
         />
 
         {/* Category Filters */}
