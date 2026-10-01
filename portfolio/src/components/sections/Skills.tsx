@@ -8,7 +8,11 @@ export default function Skills() {
   const filteredCategories =
     activeCategory === 'all'
       ? skillCategories
-      : skillCategories.filter((cat) => cat.title.toLowerCase().includes(activeCategory.toLowerCase()))
+      : skillCategories.filter((cat) => {
+          if (activeCategory === 'mobile') return cat.skills.some(skill => /flutter|ios|android/i.test(skill))
+          if (activeCategory === 'backend') return /backend|cloud/i.test(cat.title)
+          return cat.title.toLowerCase().includes(activeCategory.toLowerCase())
+        })
 
   return (
     <section id="skills" className="py-14 sm:py-16 px-6 bg-white border-y border-slate-100">

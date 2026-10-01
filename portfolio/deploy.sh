@@ -8,6 +8,9 @@ BRANCH="${1:-main}"
 PROJECT="umerwaqas"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
+echo "🔨 Building React portfolio..."
+npm run build
+
 echo "🚀 Deploying React portfolio to Cloudflare Pages ($PROJECT)..."
 npx wrangler pages deploy "$DIR/dist" --project-name="$PROJECT" --branch="$BRANCH"
 echo "✅ Done: https://$PROJECT.pages.dev"
