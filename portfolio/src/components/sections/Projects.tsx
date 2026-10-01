@@ -9,24 +9,18 @@ function ProjectSlider({ images, onOpenModal, category }: { images: { src: strin
   const { current, next, prev, goTo } = useSlider(images.length)
   const hasMultiple = images.length > 1
 
-  // Dynamic Pinterest Pin height styling based on project type for natural staggered masonry
-  const getAspectClass = (cat?: string) => {
-    if (!cat) return 'aspect-[4/3]'
-    if (cat.includes('mobile')) return 'aspect-[3/4] max-h-[460px]' // Tall Pinterest pin for mobile app screens
-    if (cat.includes('desktop')) return 'aspect-[16/11] max-h-[360px]'
-    return 'aspect-[4/3] max-h-[380px]' // Standard web app ratio
-  }
 
   return (
-    <div className="relative group overflow-hidden rounded-[1.5rem] bg-white shadow-xs cursor-pointer border border-slate-200/80 w-full">
+    <div className="project-image relative group overflow-hidden rounded-[1.5rem] bg-white shadow-xs cursor-pointer border border-slate-200/80 w-full">
       <div
         className="flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
         onClick={onOpenModal}
       >
         {images.map((img, i) => (
-          <div key={i} className={`min-w-full relative overflow-hidden ${getAspectClass(category)} bg-white flex items-center justify-center`}>
+          <div key={i} className={`min-w-full relative overflow-hidden aspect-[16/10] bg-white flex items-center justify-center`}>
             <img 
+              loading="lazy"
               src={img.src} 
               alt={img.alt} 
               className="w-full h-full object-contain p-2" 
@@ -59,14 +53,14 @@ function ProjectSlider({ images, onOpenModal, category }: { images: { src: strin
         <>
           <button
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-slate-800 shadow-md flex items-center justify-center hover:bg-white hover:scale-110 cursor-pointer border-none text-[0.75rem] z-20 opacity-0 group-hover:opacity-100 transition-all duration-300"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-slate-800 shadow-md flex items-center justify-center hover:bg-white hover:scale-110 cursor-pointer border-none text-[0.75rem] z-20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus:opacity-100 transition-all duration-300"
             aria-label="Previous image"
           >
             <i className="fas fa-chevron-left" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-slate-800 shadow-md flex items-center justify-center hover:bg-white hover:scale-110 cursor-pointer border-none text-[0.75rem] z-20 opacity-0 group-hover:opacity-100 transition-all duration-300"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-slate-800 shadow-md flex items-center justify-center hover:bg-white hover:scale-110 cursor-pointer border-none text-[0.75rem] z-20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus:opacity-100 transition-all duration-300"
             aria-label="Next image"
           >
             <i className="fas fa-chevron-right" />
@@ -115,7 +109,7 @@ export default function Projects() {
         />
 
         {/* Category Filters */}
-        <div className="flex justify-center gap-2.5 mb-10 flex-wrap">
+        <div className="project-filters flex gap-2.5 mb-10 flex-wrap">
           {projectFilters.map((f) => {
             const count =
               f.value === 'all'
@@ -126,6 +120,7 @@ export default function Projects() {
               <button
                 key={f.value}
                 onClick={() => setFilter(f.value)}
+                aria-pressed={filter === f.value}
                 className={`px-5 py-2.5 rounded-full text-[0.88rem] font-medium cursor-pointer border-none transition-all duration-300 flex items-center gap-2 ${
                   filter === f.value
                     ? 'gradient-primary text-white font-semibold shadow-md shadow-primary/20'
@@ -146,12 +141,11 @@ export default function Projects() {
         </div>
 
         {/* Pinterest Masonry Pin Grid Layout */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="project-grid">
           {filteredProjects.map((project, i) => (
             <div
               key={i}
-              className="break-inside-avoid inline-block w-full group cursor-pointer transition-transform duration-300 hover:-translate-y-2 flex flex-col"
-              onClick={() => setSelectedProject(project)}
+              className="project-card group flex flex-col"
             >
               {/* Full Dominant Image Pin Card */}
               <ProjectSlider
@@ -161,12 +155,10 @@ export default function Projects() {
               />
 
               {/* Minimal Pinterest Pin Metadata Text (Small & Clean) */}
-              <div className="pt-3 px-1">
+              <div className="project-info">
                 {/* Title & Platform Links */}
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-[0.95rem] text-slate-900 group-hover:text-primary transition-colors leading-snug line-clamp-1">
-                    {project.title}
-                  </h3>
+                  <h3><button className="project-title" onClick={() => setSelectedProject(project)}>{project.title} <span aria-hidden="true">↗</span></button></h3>
                   <div className="flex items-center gap-1.5 text-[0.85rem] text-slate-400 shrink-0">
                     {project.appStoreUrl && <i className="fab fa-apple text-slate-700" title="iOS App Store" />}
                     {project.playStoreUrl && <i className="fab fa-google-play text-emerald-600" title="Google Play Store" />}
@@ -175,7 +167,7 @@ export default function Projects() {
                 </div>
 
                 {/* Micro Description */}
-                <p className="text-slate-500 text-[0.8rem] leading-snug mt-1 line-clamp-1">
+                <p className="text-slate-500 text-[0.92rem] leading-relaxed mt-2 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -184,7 +176,7 @@ export default function Projects() {
                   {project.tags.slice(0, 3).map((tag, j) => (
                     <span
                       key={j}
-                      className="text-[0.66rem] px-2 py-0.5 rounded-full bg-slate-200/60 text-slate-600 font-medium"
+                      className="text-[0.75rem] px-2.5 py-1 rounded-full bg-slate-200/60 text-slate-600 font-medium"
                     >
                       {tag}
                     </span>

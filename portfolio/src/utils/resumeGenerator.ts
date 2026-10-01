@@ -60,163 +60,124 @@ async function getProfileImageDataUrl(): Promise<string | null> {
 export async function generateResume() {
   const pdf = new jsPDF('p', 'mm', 'a4')
   const pageWidth = pdf.internal.pageSize.getWidth()
-  const margin = 15
-  const contentWidth = pageWidth - margin * 2
+  const pageHeight = pdf.internal.pageSize.getHeight()
+  const ink: [number, number, number] = [28, 39, 51]
+  const muted: [number, number, number] = [83, 98, 112]
+  const accent: [number, number, number] = [39, 91, 91]
+  const mainX = 78
+  const mainWidth = pageWidth - mainX - 15
+  let y = 66
 
-  let y = 14
+  pdf.setProperties({ title: 'Umer Waqas | Resume', author: 'Umer Waqas' })
 
-  // Helper to add clickable text link
-  function addClickableLink(
-    text: string,
-    x: number,
-    yPos: number,
-    url: string,
-    align: 'left' | 'center' | 'right' = 'left',
-    color: [number, number, number] = [108, 92, 231]
-  ) {
-    pdf.setTextColor(color[0], color[1], color[2])
-    const width = pdf.getTextWidth(text)
-    let startX = x
-    if (align === 'center') {
-      startX = x - width / 2
-    } else if (align === 'right') {
-      startX = x - width
-    }
-    pdf.text(text, startX, yPos)
-    const fontSize = pdf.getFontSize()
-    const fontHeightMm = fontSize * 0.352778
-    pdf.link(startX, yPos - fontHeightMm * 0.8, width, fontHeightMm, { url })
-    return width
+  function textStyle(size: number, bold = false, color = ink) {
+    pdf.setFont('helvetica', bold ? 'bold' : 'normal')
+    pdf.setFontSize(size)
+    pdf.setTextColor(...color)
   }
 
-  // 1. Profile photo
-  const imgData = await getProfileImageDataUrl()
-  if (imgData) {
-    const photoSize = 26
-    const photoX = pageWidth / 2 - photoSize / 2
-    pdf.addImage(imgData, 'PNG', photoX, y, photoSize, photoSize, undefined, 'FAST')
-    pdf.setDrawColor(108, 92, 231)
-    pdf.setLineWidth(0.6)
-    pdf.circle(pageWidth / 2, y + photoSize / 2, photoSize / 2 + 0.5, 'S')
-    y += photoSize + 6
+  function paragraph(text: string, x: number, top: number, width: number, size = 9, color = muted) {
+    textStyle(size, false, color)
+    const lines: string[] = pdf.splitTextToSize(text, width)
+    pdf.text(lines, x, top, { lineHeightFactor: 1.4 })
+    return top + lines.length * size * 0.352778 * 1.4
   }
 
-  // 2. Name & Title
-  pdf.setFont('helvetica', 'bold')
-  pdf.setFontSize(22)
-  pdf.setTextColor(40, 40, 40)
-  pdf.text('Umer Waqas', pageWidth / 2, y, { align: 'center' })
-  y += 6
-
-  pdf.setFont('helvetica', 'bold')
-  pdf.setFontSize(11)
-  pdf.setTextColor(108, 92, 231)
-  pdf.text('AI Full Stack Developer', pageWidth / 2, y, { align: 'center' })
-  y += 6
-
-  // 3. Contact Links Row (Email | Phone / WhatsApp)
-  pdf.setFont('helvetica', 'normal')
-  pdf.setFontSize(9)
-
-  const emailText = 'um.waqas.khan@gmail.com'
-  const phoneText = '+92 345 9347900'
-  const sepText = '  |  '
-
-  const emailW = pdf.getTextWidth(emailText)
-  const phoneW = pdf.getTextWidth(phoneText)
-  const sepW = pdf.getTextWidth(sepText)
-  const row1TotalW = emailW + sepW + phoneW
-  let row1X = (pageWidth - row1TotalW) / 2
-
-  addClickableLink(emailText, row1X, y, 'mailto:um.waqas.khan@gmail.com', 'left', [108, 92, 231])
-  row1X += emailW
-  pdf.setTextColor(150, 150, 150)
-  pdf.text(sepText, row1X, y)
-  row1X += sepW
-  addClickableLink(phoneText, row1X, y, 'https://wa.me/923459347900', 'left', [108, 92, 231])
-  y += 5
-
-  // 4. Portfolio & Profiles Row (GitHub | LinkedIn | Upwork Profile)
-  const ghText = 'github.com/umerwaqas92'
-  const liText = 'linkedin.com/in/umerwaqas92'
-  const uwText = 'Upwork Profile (Top Rated · 100%)'
-
-  const ghW = pdf.getTextWidth(ghText)
-  const liW = pdf.getTextWidth(liText)
-  const uwW = pdf.getTextWidth(uwText)
-  const row2TotalW = ghW + sepW + liW + sepW + uwW
-  let row2X = (pageWidth - row2TotalW) / 2
-
-  addClickableLink(ghText, row2X, y, 'https://github.com/umerwaqas92', 'left', [108, 92, 231])
-  row2X += ghW
-  pdf.setTextColor(150, 150, 150)
-  pdf.text(sepText, row2X, y)
-  row2X += sepW
-  addClickableLink(liText, row2X, y, 'https://linkedin.com/in/umerwaqas92', 'left', [108, 92, 231])
-  row2X += liW
-  pdf.setTextColor(150, 150, 150)
-  pdf.text(sepText, row2X, y)
-  row2X += sepW
-  addClickableLink(uwText, row2X, y, 'https://www.upwork.com/freelancers/~010219e25749223694', 'left', [108, 92, 231])
-  y += 7
-
-  // Divider Line
-  pdf.setDrawColor(230, 230, 240)
-  pdf.setLineWidth(0.4)
-  pdf.line(margin, y, pageWidth - margin, y)
-  y += 7
-
-  // Helper for Section Headers
-  function addSectionHeader(title: string) {
-    pdf.setFont('helvetica', 'bold')
-    pdf.setFontSize(12)
-    pdf.setTextColor(108, 92, 231)
-    pdf.text(title, margin, y)
-    y += 2
-    pdf.setDrawColor(108, 92, 231)
-    pdf.setLineWidth(0.5)
-    pdf.line(margin, y, margin + 25, y)
-    y += 5
+  function link(label: string, url: string, x: number, top: number, size = 8.5) {
+    textStyle(size, false, accent)
+    pdf.textWithLink(label, x, top, { url })
   }
 
-  // 5. Professional Summary
-  addSectionHeader('Professional Summary')
-  pdf.setFont('helvetica', 'normal')
-  pdf.setFontSize(9)
-  pdf.setTextColor(60, 60, 60)
-  const summary =
-    'AI Full Stack Developer crafting end-to-end solutions with React, Next.js, Node.js, Python, Flutter, and AI integration. Leveraging AI-assisted development (Claude Code, Cursor AI) to ship 10x faster. Top Rated on Upwork with 100% Job Success across 48+ international projects.'
-  const summaryLines = pdf.splitTextToSize(summary, contentWidth)
-  pdf.text(summaryLines, margin, y)
-  y += summaryLines.length * 4.2 + 6
+  function pageBackground() {
+    pdf.setFillColor(243, 246, 245)
+    pdf.rect(0, 55, 68, pageHeight - 55, 'F')
+    pdf.setDrawColor(220, 227, 225)
+    pdf.setLineWidth(0.25)
+    pdf.line(68, 61, 68, pageHeight - 16)
+  }
 
-  // 6. Technical Skills
-  addSectionHeader('Technical Skills')
-  pdf.setFont('helvetica', 'normal')
-  pdf.setFontSize(9)
-  pdf.setTextColor(60, 60, 60)
+  function ensureSpace(height: number) {
+    if (y + height <= pageHeight - 18) return
+    pdf.addPage()
+    pageBackground()
+    textStyle(12, true)
+    pdf.text('Umer Waqas', 15, 22)
+    textStyle(9, false, muted)
+    pdf.text('AI Full Stack Developer / Continued', 15, 29)
+    y = 48
+  }
+
+  function section(title: string, requiredSpace = 25) {
+    ensureSpace(requiredSpace)
+    textStyle(9, true, accent)
+    pdf.text(title.toUpperCase(), mainX, y)
+    pdf.setDrawColor(213, 224, 221)
+    pdf.setLineWidth(0.3)
+    pdf.line(mainX, y + 3, pageWidth - 15, y + 3)
+    y += 10
+  }
+
+  pageBackground()
+  pdf.setFillColor(...accent)
+  pdf.rect(0, 0, pageWidth, 2, 'F')
+  textStyle(30, true)
+  pdf.text('Umer Waqas', 15, 25)
+  textStyle(12, false, accent)
+  pdf.text('AI Full Stack Developer', 15, 34)
+  textStyle(9, false, muted)
+  pdf.text('Web platforms / Mobile applications / AI integration', 15, 43)
+  const image = await getProfileImageDataUrl()
+  if (image) pdf.addImage(image, 'PNG', pageWidth - 45, 15, 29, 29, undefined, 'FAST')
+  pdf.setDrawColor(213, 224, 221)
+  pdf.line(15, 49, pageWidth - 15, 49)
+
+  // A quiet sidebar keeps contact details and skills easy to scan.
+  let sidebarY = 66
+  function sidebarSection(title: string) {
+    textStyle(9, true, accent)
+    pdf.text(title.toUpperCase(), 15, sidebarY)
+    sidebarY += 9
+  }
+  sidebarSection('Contact')
+  link('um.waqas.khan@gmail.com', 'mailto:um.waqas.khan@gmail.com', 15, sidebarY, 8)
+  sidebarY += 6
+  link('+92 345 9347900', 'https://wa.me/923459347900', 15, sidebarY)
+  sidebarY += 12
+  sidebarSection('Online profiles')
+  for (const [label, url] of [
+    ['GitHub / umerwaqas92', 'https://github.com/umerwaqas92'],
+    ['LinkedIn / umerwaqas92', 'https://linkedin.com/in/umerwaqas92'],
+    ['Upwork profile', 'https://www.upwork.com/freelancers/~010219e25749223694'],
+  ]) {
+    link(label, url, 15, sidebarY, 8)
+    sidebarY += 6
+  }
+  sidebarY += 6
+  sidebarSection('Technical skills')
   const skills = [
-    ['Frontend:', 'React, Next.js, TypeScript, Tailwind CSS, Flutter'],
-    ['Backend:', 'Node.js, Python, FastAPI, REST APIs, GraphQL, Go'],
-    ['AI / ML:', 'OpenAI, Claude, LangChain, Vector DBs, RAG, Fine-tuning'],
-    ['Cloud & DevOps:', 'AWS, GCP, Cloudflare, Docker, VPS'],
-    ['Mobile Apps:', 'Flutter, Dart, iOS & Android'],
-    ['AI Workflows:', 'Claude Code, Cursor AI, rapid prototyping'],
+    ['Frontend', 'React, Next.js, TypeScript, Tailwind CSS, Flutter'],
+    ['Backend', 'Node.js, Python, FastAPI, REST APIs, GraphQL, Go'],
+    ['AI / ML', 'OpenAI, Claude, LangChain, Vector DBs, RAG, Fine-tuning'],
+    ['Cloud & DevOps', 'AWS, GCP, Cloudflare, Docker, VPS'],
+    ['Mobile apps', 'Flutter, Dart, iOS & Android'],
+    ['AI workflows', 'Claude Code, Cursor AI, rapid prototyping'],
   ]
-  skills.forEach(([cat, val]) => {
-    pdf.setFont('helvetica', 'bold')
-    pdf.setTextColor(40, 40, 40)
-    pdf.text(`• ${cat}`, margin + 2, y)
-    const catW = pdf.getTextWidth(`• ${cat} `)
-    pdf.setFont('helvetica', 'normal')
-    pdf.setTextColor(60, 60, 60)
-    pdf.text(val, margin + 2 + catW, y)
-    y += 4.5
-  })
-  y += 6
+  for (const [label, value] of skills) {
+    textStyle(8.5, true)
+    pdf.text(label, 15, sidebarY)
+    sidebarY = paragraph(value, 15, sidebarY + 5, 43, 8) + 5
+  }
+  sidebarY += 3
+  sidebarSection('Upwork recognition')
+  textStyle(11, true)
+  pdf.text('Top Rated', 15, sidebarY)
+  sidebarY = paragraph('100% Job Success\n48+ international projects', 15, sidebarY + 6, 43, 8)
 
-  // 7. Work Experience
-  addSectionHeader('Experience')
+  section('Profile', 35)
+  y = paragraph(
+    'AI Full Stack Developer crafting end-to-end solutions with React, Next.js, Node.js, Python, Flutter, and AI integration. Leveraging AI-assisted development (Claude Code, Cursor AI) to ship 10x faster. Top Rated on Upwork with 100% Job Success across 48+ international projects.',
+    mainX, y, mainWidth,
+  ) + 4
 
   const workExp = [
     {
@@ -249,41 +210,27 @@ export async function generateResume() {
     },
   ]
 
-  workExp.forEach((exp) => {
-    pdf.setFont('helvetica', 'bold')
-    pdf.setFontSize(10)
-    pdf.setTextColor(40, 40, 40)
-    pdf.text(`${exp.role} — ${exp.company}`, margin, y)
 
-    pdf.setFont('helvetica', 'normal')
-    pdf.setFontSize(8.5)
-    pdf.setTextColor(120, 120, 120)
-    pdf.text(exp.date, pageWidth - margin, y, { align: 'right' })
-    y += 4.5
-
-    pdf.setFont('helvetica', 'normal')
-    pdf.setFontSize(8.5)
-    pdf.setTextColor(70, 70, 70)
-    const expLines = pdf.splitTextToSize(exp.desc, contentWidth)
-    pdf.text(expLines, margin, y)
-    y += expLines.length * 3.8 + 1.5
-
+  section('Experience', 43)
+  for (const exp of workExp) {
+    textStyle(8.5)
+    const descriptionLines: string[] = pdf.splitTextToSize(exp.desc, mainWidth)
+    const blockHeight = 13 + descriptionLines.length * 4.2 + (exp.linkText ? 5 : 0) + 5
+    ensureSpace(blockHeight)
+    textStyle(10, true)
+    pdf.text(exp.role, mainX, y)
+    y += 5
+    textStyle(8.5, true, accent)
+    pdf.text(exp.company, mainX, y)
+    textStyle(8, false, muted)
+    pdf.text(exp.date, pageWidth - 15, y, { align: 'right' })
+    y = paragraph(exp.desc, mainX, y + 5, mainWidth, 8.5) + 1
     if (exp.linkText && exp.linkUrl) {
-      pdf.setFont('helvetica', 'normal')
-      pdf.setFontSize(8.5)
-      pdf.setTextColor(120, 120, 120)
-      pdf.text('Link: ', margin, y)
-      const linkLabelW = pdf.getTextWidth('Link: ')
-      addClickableLink(exp.linkText, margin + linkLabelW, y, exp.linkUrl, 'left', [108, 92, 231])
-      y += 4.5
+      link(exp.linkText, exp.linkUrl, mainX, y, 8)
+      y += 5
     }
-
-    y += 3
-  })
-
-  // 8. Featured Projects
-  y += 2
-  addSectionHeader('Featured Projects')
+    y += 2
+  }
 
   const projectList = [
     {
@@ -312,25 +259,33 @@ export async function generateResume() {
     },
   ]
 
-  projectList.forEach((proj) => {
-    pdf.setFont('helvetica', 'bold')
-    pdf.setFontSize(9.5)
-    pdf.setTextColor(40, 40, 40)
-    addClickableLink(proj.name, margin, y, proj.url, 'left', [108, 92, 231])
-    
-    const projNameW = pdf.getTextWidth(proj.name)
-    pdf.setFont('helvetica', 'italic')
-    pdf.setFontSize(8.5)
-    pdf.setTextColor(120, 120, 120)
-    pdf.text(` (${proj.tech})`, margin + projNameW, y)
-    y += 4
 
-    pdf.setFont('helvetica', 'normal')
-    pdf.setFontSize(8.5)
-    pdf.setTextColor(70, 70, 70)
-    pdf.text(proj.desc, margin, y)
-    y += 5.5
-  })
+  section('Selected projects', 32)
+  for (const project of projectList) {
+    textStyle(9)
+    const title = project.name.replace(' (aiinfluencergenerator.app)', '')
+    const titleLines: string[] = pdf.splitTextToSize(title, mainWidth)
+    textStyle(8)
+    const techLines: string[] = pdf.splitTextToSize(project.tech, mainWidth)
+    const descLines: string[] = pdf.splitTextToSize(project.desc, mainWidth)
+    ensureSpace(titleLines.length * 4.5 + techLines.length * 4 + descLines.length * 4 + 4)
+    textStyle(9, true, accent)
+    for (const line of titleLines) {
+      pdf.textWithLink(line, mainX, y, { url: project.url })
+      y += 4.5
+    }
+    y = paragraph(project.tech, mainX, y, mainWidth, 8) + 0.5
+    y = paragraph(project.desc, mainX, y, mainWidth, 8, ink) + 3
+  }
 
+  const pageCount = pdf.getNumberOfPages()
+  for (let page = 1; page <= pageCount; page++) {
+    pdf.setPage(page)
+    pdf.setDrawColor(213, 224, 221)
+    pdf.line(mainX, pageHeight - 13, pageWidth - 15, pageHeight - 13)
+    textStyle(7, false, muted)
+    pdf.text('UMER WAQAS / RESUME', mainX, pageHeight - 8)
+    pdf.text(`${page} / ${pageCount}`, pageWidth - 15, pageHeight - 8, { align: 'right' })
+  }
   pdf.save('Umer_Waqas_Resume.pdf')
 }

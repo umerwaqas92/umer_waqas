@@ -20,12 +20,12 @@ function App() {
       <Navbar onOpenModal={() => setModalOpen(true)} />
       <main>
         <Hero onOpenModal={() => setModalOpen(true)} />
-        <WhyMe />
-        <About />
-        <Upwork />
-        <Skills />
         <Projects />
+        <About />
+        <Skills />
         <Experience />
+        <WhyMe />
+        <Upwork />
         <Contact onOpenModal={() => setModalOpen(true)} />
       </main>
       <Footer />

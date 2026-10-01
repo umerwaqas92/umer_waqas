@@ -19,6 +19,14 @@ export default function Navbar({ onOpenModal }: Props) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
     if (menuOpen) {
@@ -44,7 +52,7 @@ export default function Navbar({ onOpenModal }: Props) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[1000] py-4 transition-all duration-300 ${
+        className={`site-nav fixed top-0 left-0 right-0 z-[1000] py-4 transition-all duration-300 ${
           scrolled
             ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 py-[12px] shadow-sm'
             : 'bg-transparent'
@@ -57,12 +65,12 @@ export default function Navbar({ onOpenModal }: Props) {
             onClick={(e) => handleNavClick(e, '#home')}
             className="text-[1.8rem] font-black tracking-tighter gradient-text flex items-center gap-2"
           >
-            <span>UW</span>
+            <span className="brand-monogram">uw.</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 status-dot inline-block" />
           </a>
 
           {/* Desktop Links */}
-          <ul className="hidden lg:flex gap-7 items-center">
+          <ul className="hidden lg:flex gap-6 items-center">
             {navLinks.map((link) => {
               const sectionId = link.href.slice(1)
               const isActive = activeSection === sectionId
@@ -88,7 +96,7 @@ export default function Navbar({ onOpenModal }: Props) {
                   onClick={onOpenModal}
                   className="gradient-primary text-white px-5 py-2 rounded-full font-bold text-[0.85rem] transition-all cursor-pointer border-none shadow-sm hover:shadow-md hover:shadow-primary/20"
                 >
-                  Hire Me
+                  Let’s talk ↗
                 </button>
               </li>
             )}
@@ -99,6 +107,8 @@ export default function Navbar({ onOpenModal }: Props) {
             className="lg:hidden text-[1.4rem] text-slate-800 cursor-pointer bg-transparent border-none p-1 z-[1001]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`} />
           </button>
@@ -115,7 +125,7 @@ export default function Navbar({ onOpenModal }: Props) {
           />
 
           {/* Solid White Mobile Side Menu */}
-          <div className="relative w-72 max-w-[80vw] bg-white h-full shadow-2xl z-10 flex flex-col p-6 overflow-y-auto border-l border-slate-200">
+          <div id="mobile-navigation" className="relative w-72 max-w-[80vw] bg-white h-full shadow-2xl z-10 flex flex-col p-6 overflow-y-auto border-l border-slate-200">
             {/* Header in Drawer */}
             <div className="flex items-center justify-between pb-6 border-b border-slate-100 mb-6">
               <a

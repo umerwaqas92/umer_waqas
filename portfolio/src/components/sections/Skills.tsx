@@ -36,6 +36,7 @@ export default function Skills() {
             <button
               key={tab.id}
               onClick={() => setActiveCategory(tab.id)}
+              aria-pressed={activeCategory === tab.id}
               className={`px-4 py-1.5 rounded-full text-[0.85rem] font-medium cursor-pointer border-none transition-all duration-300 ${
                 activeCategory === tab.id
                   ? 'gradient-primary text-white shadow-sm font-semibold'
