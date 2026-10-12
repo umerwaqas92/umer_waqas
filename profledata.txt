@@ -1,0 +1,280 @@
+UMER WAQAS
+AI Full Stack Developer & Flutter Specialist
+
+Email: um.waqas.khan@gmail.com
+WhatsApp: +92 345 9347900
+Portfolio: https://umerwaqas.pages.dev
+Upwork: https://www.upwork.com/freelancers/~010219e25749223694
+GitHub: https://github.com/umerwaqas92
+LinkedIn: https://www.linkedin.com/in/umerwaqas92
+X: https://x.com/zaynix_92
+
+my current salary 800$ per month and 0 day notice period 
+
+Full stack and ai rag  and automation  experience 3+ years 
+Full stack saas  experience 7+ years ( node,  go, react, next js type scripts , python ) 
+flutter android and iOS  10+ years   and buildings build  100+ android and ios apps ( saas apps, tools apps )
+overall software development experience 11 years
+
+
+Date of birthday:04/04/1998
+
+RESUME LINKS
+Full Stack Developer: https://umerwaqas.pages.dev?resume=1
+AI Software Engineer: https://umerwaqas.pages.dev?resume=2
+Flutter Developer: https://umerwaqas.pages.dev?resume=3
+
+PROFESSIONAL SUMMARY
+AI Full Stack Developer with 7+ years of experience building AI-powered web platforms, cross-platform Flutter mobile apps, and scalable backends. Specialized in AI workflows, LLM integration, RAG systems, and rapid shipping using Claude Code & Cursor AI. Top Rated on Upwork with 100% Job Success across 48+ projects. Delivered 40+ web, mobile, and AI solutions and 22+ published mobile apps.
+
+CORE SKILLS
+Frontend: React / Next.js, TypeScript / JavaScript, HTML5 / CSS3 / Tailwind, Flutter / Dart
+Backend: Node.js / Express, Python / FastAPI, RESTful APIs / GraphQL, PostgreSQL / MongoDB
+AI & ML: OpenAI / Claude API, LangChain / LlamaIndex, Vector Databases, RAG Systems
+Cloud & DevOps: AWS / GCP / Cloudflare, Docker / Kubernetes, CI/CD, Serverless
+AI-Assisted Development: Claude Code / Cursor AI, AI Pair Programming, Rapid Prototyping
+
+WORK EXPERIENCE
+
+Lead Developer / AI Full Stack & Flutter
+- Lead a team of 20+ delivering AI-powered web, mobile & blockchain solutions.
+- Built OnePDF (iOS PDF utility on App Store), nichetraffickit.com (traffic platform), and AI Influencer Generator (Flutter cross-platform).
+- Reduced delivery time by 60% through AI-assisted development workflows.
+
+Top Rated Upwork Freelancer
+- 100% Job Success across 48+ projects.
+- Shipped AI MVPs in under 5 days.
+- Automated business workflows saving clients 10+ hours/week.
+- Specializing in LLM integration, RAG systems, and intelligent automation.
+
+FEATURED PROJECTS
+https://www.resollm.ai/ Create content that gets your brand mentioned by LLMs ( react, go etc )
+
+Ardent — Database Branching for Coding Agents
+Live: https://www.tryardent.com/
+Database branching and sandbox execution infrastructure for autonomous coding agents. Enables AI agents to run schema migrations, clean data, deduplicate records, backfill, and test queries against isolated 1:1 copies of production Postgres databases in under 6 seconds using copy-on-write storage.
+Stack: AI Agents, PostgreSQL, Copy-on-Write, Database Branching, Sandboxing, Cloud CI/CD
+
+Askly — AI Database Agent
+Live: https://askly.sairahul.dev
+Mac desktop app that connects to your database and lets you chat about your data using natural language. Full SaaS with Go backend, React/Electron frontend, and Firebase auth.
+Stack: Go, React, Electron, Firebase Auth
+
+Diffsight
+Live: https://diffsight.sairahul.dev
+GitHub PR review tool with focused inline feedback; pay per review, no seats/subscription.
+Stack: Next.js, React UI, Auth, Payments, PostgreSQL, Go backend
+
+DevRel Employee
+Live: https://devrelay.so
+AI DevRel for dev-tool teams; turns GitHub releases into posts, changelogs, and docs updates.
+Stack: Next.js, React UI, Auth, Payments, PostgreSQL, Go backend
+
+NicheTrafficKit
+Live: https://nichetraffickit.com
+Turns a niche into a Facebook content engine — research, recreate posts/reels, schedule content.
+Stack: Next.js, TypeScript, AI-assisted development, Go
+
+WorkForge — Freelance Marketplace & Escrow
+Full-featured freelance marketplace and escrow platform built with Laravel 11, Livewire 3, and Tailwind CSS. End-to-end hiring loop with real-time job discovery, Upwork-style profile builders, proposal bidding, milestone escrow, and one-click payment releases.
+Stack: Laravel 11, Livewire 3, Tailwind CSS
+
+AI Influencer Generator
+Design unique, lifelike AI avatars, turn prompts into viral videos, and generate unlimited social content on demand. Available as a full web platform, iOS App, and Android App.
+Stack: Flutter, Next.js, Python AI
+
+PUBLISHED PRODUCTION MOBILE APPS
+Studio / Portfolio: https://www.app2mob.com/
+
+1. DocReady Pro: PDF Editor & Merge — Productivity
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.DocReadyPro
+App Store: https://apps.apple.com/us/app/docready-pro-pdf-editor-merge/id6758918081
+
+2. The TankeR: Fuel Savings — Travel & GPS
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.gas
+App Store: https://apps.apple.com/us/app/the-tanker-fuel-savings/id6761951680
+
+3. VisageID: AI Visa & Passport Photo Maker — Photography / AI
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.visageid
+App Store: https://apps.apple.com/us/app/visageid-ai-passport-visa-pic/id6757989727
+
+4. PhotoFix AI: Restore Old Photos — Photography / Computer Vision
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.com.photoai
+App Store: https://apps.apple.com/app/id6760268183
+
+5. PlayCam: Screen Recorder & FaceCam — Video / Creator Tools
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.videos
+App Store: https://apps.apple.com/app/id6777489910
+
+6. Last One Out: Square Race Game — Games / Physics
+Google Play: https://play.google.com/store/apps/details?id=com.lastoneout.game
+App Store: https://apps.apple.com/app/id6797068257
+
+7. FaceStory: Face Transform — Photography / AI
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.babystarai
+App Store: https://apps.apple.com/us/app/id6760492093
+
+8. Dayaa: Do Nothing Challenge — Lifestyle / Gamification
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.dayaaapp
+App Store: https://apps.apple.com/app/dayaa-time-waste-challenge/id6757207069
+
+9. Askora: Viral Daily Challenge — Social / Trivia
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.askora
+App Store: https://apps.apple.com/us/app/askora-viral-daily-challenge/id6759047138
+
+10. Tappi: Couples Love Private App — Social / Privacy
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.tappi
+App Store: https://apps.apple.com/app/id6761524756
+
+11. Amana: Lend & Debt Tracker — Finance / Accounting
+Google Play: https://play.google.com/store/apps/details?id=com.alnomily.amana
+App Store: https://apps.apple.com/us/app/amana-lend-debt-tracker/id6756895244
+
+12. The Link Game: Horror & Puzzles — Gaming
+Google Play: https://play.google.com/store/apps/details?id=com.alnomily.thelink
+App Store: https://apps.apple.com/us/app/id6757315344
+
+13. Speed Internet Test App — Utilities / Network
+Google Play: https://play.google.com/store/apps/details?id=com.speedtester.app
+App Store: https://apps.apple.com/us/app/speed-internet-test-app/id1184734022
+
+14. Qibla Quran Dua Prayer Time — Lifestyle
+Google Play: https://play.google.com/store/apps/details?id=com.app.macuaqiblacompass01
+App Store: https://apps.apple.com/us/app/qibla-quran-dua-prayer-time/id1048461252
+
+15. QR Craft: QR Generator & Scanner — Utilities / Camera
+App Store: https://apps.apple.com/us/app/qr-code-scan-generator-and-scanner-creat-reader/id1186333547
+
+16. Arabic Recipes: Cooking Arts — Lifestyle
+Google Play: https://play.google.com/store/apps/details?id=com.app.ArAbicCook
+App Store: https://apps.apple.com/us/app/id1102359800
+
+17. Easy Video Teleprompter — Video / Creator Studio
+Google Play: https://play.google.com/store/apps/details?id=com.quickai.teleprompter_for_video
+App Store: https://apps.apple.com/us/app/easy-video-teleprompter/id6746375942
+
+18. Microphone Amplifier & Recorder — Audio / Sound
+Google Play: https://play.google.com/store/apps/details?id=com.app.quickaidev.microphone_amplifier
+App Store: https://apps.apple.com/us/app/microphone-amplifier/id6747624484
+
+19. TrendSnap Trading Tips FX — Finance / Forex Analytics
+Google Play: https://play.google.com/store/apps/details?id=com.app.trendsnap_app
+
+20. Hashtags AI: Follower Booster — Marketing / AI
+Google Play: https://play.google.com/store/apps/details?id=com.alnomily.hashtags_app
+App Store: https://apps.apple.com/us/app/hashtagsal-followerbooster/id6748636159
+
+21. Vynlo: Discover Trends Go Viral — Marketing / Trends
+Google Play: https://play.google.com/store/apps/details?id=com.app2mob.trends
+App Store: https://apps.apple.com/app/id6761114746
+
+22. Topikat Status: WhatsApp Status — Social
+Google Play: https://play.google.com/store/apps/details?id=com.textchatgirls.app
+App Store: https://apps.apple.com/us/app/%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%AA%D9%88%D8%A8%D9%8A%D9%83%D8%A7%D8%AA-%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D9%88%D8%A7%D8%AA%D8%B3/id1361436372
+
+Senior Full Stack & Mobile Engineer | AI
+
+Creatix Sol · Full-time
+
+Dec 2024 - Present · 1 yr 11 mos
+
+Remote
+
+- Build and maintain production web, mobile, backend, and AI-powered applications.
+- Develop full-stack solutions using Python, FastAPI, Node.js, React, Next.js, TypeScript, and Flutter.
+- Build and maintain cross-platform Flutter applications for iOS and Android.
+- Integrate AI/LLM APIs, third-party services, authentication, payments, subscriptions, and REST APIs.
+- Design database-backed systems using PostgreSQL, MongoDB, Firebase, and related technologies.
+- Handle production debugging, API integrations, deployment, releases, and ongoing maintenance.
+- Use Claude Code and Cursor AI for rapid prototyping, debugging, refactoring, and multi-file development.
+- Work across the complete product lifecycle from requirements and architecture through deployment and post-launch support.
+
+Senior Full Stack & AI Engineer
+
+NicheTrafficKit
+
+Oct 2024 - Present · 2 yrs 1 mo
+
+- Built and scaled NicheTrafficKit (nichetraffickit.com), an AI-powered content automation and marketing platform for multi-platform viral publishing.
+- Architected autonomous AI agents and generative workflows for viral video creation, character avatars, reels, and automated captioning.
+- Developed cross-platform mobile applications using Flutter for iOS and Android, integrating backend queues and real-time generation pipelines.
+- Implemented full-stack architecture using Next.js/React, Python/FastAPI, Node.js, and background job queues for high-throughput media rendering.
+- Integrated AI/LLM models, prompt pipelines, computer vision, voice synthesis, and automated posting integrations across social channels.
+- Engineered automated research agents that analyze top-performing niche formats, hooks, and engagement signals.
+
+Freelance Full Stack & Mobile Developer | AI Engineer
+
+Upwork - Freelance
+
+Oct 2022 - Present · 4 yrs 1 mo
+
+- Top Rated freelancer with 100% Job Success across 48+ projects spanning AI, SaaS, web, backend, automation, and mobile applications.
+- Build and ship production applications for international clients across Flutter, iOS, Android, React, Next.js, Python, FastAPI, Node.js, and Go.
+- Develop REST APIs, authentication systems, database-backed applications, integrations, and cloud deployments.
+- Build and publish cross-platform Flutter applications for iOS and Android, including subscriptions and third-party integrations.
+- Implement AI/LLM integrations, RAG workflows, vector search, embeddings, document processing, and AI assistants.
+- Deliver complete projects from requirements and architecture through development, deployment, handover, and post-launch support.
+- Delivered selected AI MVPs in under 5 days and automated workflows that saved clients 10+ hours per week.
+- Work directly with clients to translate business requirements into practical, maintainable production solutions.
+
+Quickai.dev - Get your mvp and saas in 15 days logo
+Lead Full Stack & Mobile Engineer
+
+Quickai.dev - Get your mvp and saas in 15 days · Full-time
+
+Oct 2021 - Present · 5 yrs 1 mo
+
+Soan Garden, Block A Soan Gardens, Islamabad
+
+- Lead development of web, mobile, SaaS, and AI-powered products from concept through production.
+- Build applications using Flutter, iOS, Android, React, Next.js, Python, FastAPI, Node.js, and modern APIs.
+- Design backend services, REST APIs, authentication, database schemas, and third-party integrations.
+- Build cross-platform mobile applications with Flutter for both Android and iOS.
+- Integrate AI APIs and automation workflows into production applications.
+- Handle architecture, development, debugging, deployment, and ongoing product improvements.
+- Work with AI-assisted development tools including Claude Code and Cursor AI to accelerate development and prototyping.
+- Translate product requirements into scalable technical implementations and production-ready releases.
+
+ Knowledge Engineering, Full-Stack Development and +4 skills
+
+Lead AI, Full Stack & Mobile Engineer
+
+Fluttydev - Agency
+
+Oct 2020 - Present · 6 yrs 1 mo
+
+- Led delivery of AI-powered, web, backend, and mobile products for international clients while coordinating engineering and product work across a 20+ member team.
+- Built and shipped cross-platform Flutter applications for iOS and Android.
+- Developed Python/FastAPI and Node.js backends supporting mobile and web applications.
+- Designed REST APIs, authentication, database schemas, and data models using PostgreSQL, MongoDB, and Firebase.
+- Integrated payment systems, subscriptions, third-party services, and AI/LLM APIs.
+- Owned solution architecture, deployment, production debugging, and technical reviews.
+- Worked directly with clients on requirements, scope, technical decisions, progress, and releases.
+- Provided post-launch support and resolved production issues across mobile, backend, and third-party systems.
+- Used Claude Code and Cursor AI for prototyping, debugging, refactoring, and multi-file implementation, reducing delivery time by approximately 60%.
+
+Full Stack Engineer
+
+Tech Solutions Inc.
+
+Oct 2023 - Oct 2024 · 1 yr 1 mo
+
+- Developed and maintained production client-facing web applications and backend services.
+- Built and integrated APIs and database-backed functionality connecting frontend and backend systems.
+- Contributed to migration from legacy systems toward modern service-based architecture.
+- Improved application maintainability and contributed to approximately 40% reduction in page-load time.
+- Investigated production issues, fixed defects, and supported application releases.
+- Worked with the engineering team on feature delivery, code quality, and ongoing maintenance.
+
+Junior Full Stack Developer
+
+Web Agency
+
+Oct 2022 - Oct 2023 · 1 yr 1 mo
+
+- Built 10+ responsive websites for agency clients from initial requirements through deployment.
+- Gathered requirements and translated client needs into website structures and functionality.
+- Developed responsive interfaces for desktop, tablet, and mobile devices.
+- Tested websites across browsers and devices and resolved functional and UI issues.
+- Managed deployments and supported clients after launch.
+- Implemented client revisions and maintained live websites.

@@ -1,7 +1,5 @@
 import { resolveJobProfile } from './data/jobProfiles'
 import { useEffect, useState } from 'react'
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import WhyMe from './components/sections/WhyMe'
 import About from './components/sections/About'
@@ -37,7 +35,6 @@ function App() {
 
   return (
     <div>
-      <Navbar onOpenModal={() => setModalOpen(true)} />
       <main>
         <Hero job={job} onOpenModal={() => setModalOpen(true)} />
         <Projects />
@@ -48,7 +45,6 @@ function App() {
         <Upwork />
         <Contact onOpenModal={() => setModalOpen(true)} />
       </main>
-      <Footer job={job} />
       <WhatsAppFloat onOpen={() => setModalOpen(true)} />
       <WhatsAppModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
